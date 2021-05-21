@@ -1,7 +1,13 @@
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import {
+  createStyles,
+  makeStyles,
+  ThemeProvider,
+} from '@material-ui/core/styles';
 import Navbar from 'components/Navbar';
 import type { AppProps } from 'next/app';
+import theme from 'pages/_theme';
+import React from 'react';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -18,13 +24,11 @@ const useStyles = makeStyles(theme =>
 function MyApp({ Component, pageProps }: AppProps) {
   const classes = useStyles();
   return (
-    <>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <Navbar />
-      <div className={classes.container}>
-        <Component {...pageProps} />
-      </div>
-    </>
+      <Component {...pageProps} />
+    </ThemeProvider>
   );
 }
 

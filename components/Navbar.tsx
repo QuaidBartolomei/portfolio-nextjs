@@ -8,10 +8,10 @@ import Typography from '@material-ui/core/Typography';
 import MenuIcon from '@material-ui/icons/Menu';
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Container from '@material-ui/core/Container';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    root: {},
     menuButton: {},
     title: {
       flexGrow: 1,
@@ -70,20 +70,22 @@ export default function Navbar() {
   );
 
   return (
-    <div className={classes.root}>
+    <>
       <AppBar position='fixed' elevation={0}>
-        <Toolbar>
-          <BrandLink />
-          <ToolbarLinks />
-          <MenuButton />
-        </Toolbar>
-        {showLinks && (
-          <div className={classes.linksContainer}>
-            <Link href='/projects'>Projects</Link>
-          </div>
-        )}
+        <Container maxWidth='lg'>
+          <Toolbar>
+            <BrandLink />
+            <ToolbarLinks />
+            <MenuButton />
+          </Toolbar>
+          {showLinks && (
+            <div className={classes.linksContainer}>
+              <Link href='/projects'>Projects</Link>
+            </div>
+          )}
+        </Container>
       </AppBar>
       <Toolbar />
-    </div>
+    </>
   );
 }

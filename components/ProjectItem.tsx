@@ -1,3 +1,4 @@
+import { ButtonBase } from '@material-ui/core';
 import Link from '@material-ui/core/Link';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -7,7 +8,6 @@ const useStyles = makeStyles(theme =>
   createStyles({
     container: {
       display: 'flex',
-      width: 300,
       padding: theme.spacing(1),
       flexDirection: 'column',
       alignItems: 'center',
@@ -18,20 +18,27 @@ const useStyles = makeStyles(theme =>
       },
     },
     projectScreenshot: {
-      maxHeight: 160,
+      height: 200,
+      width: 320,
+      margin: theme.spacing(1),
+      border: 'solid thin black',
+      backgroundPosition: 'center',
+      backgroundSize: 'contain',
+      backgroundRepeat: 'no-repeat',
       objectFit: 'cover',
     },
     title: {},
-    projectDetails: {
-      margin: 32,
-    },
+    projectDetails: {},
     links: {
-      '&>*': {
-        marginRight: 16,
-      },
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems: 'space-evenly',
+      width: 200,
+      justifyContent: 'space-evenly',
     },
-    projectScreenshotContainer: {},
-    description: {},
+    description: {
+      width: 300,
+    },
   })
 );
 
@@ -48,11 +55,13 @@ export default function ProjectItem(props: ProjectItemProps) {
   const { imageUrl, name, description } = props;
   return (
     <div className={classes.container}>
-      <img
-        src={imageUrl}
-        alt={'project'}
+      <ButtonBase
         className={classes.projectScreenshot}
+        style={{
+          backgroundImage: `url(${imageUrl})`,
+        }}
       />
+
       <Typography variant='h5' className={classes.title}>
         {name}
       </Typography>
