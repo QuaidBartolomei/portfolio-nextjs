@@ -1,5 +1,6 @@
 import Container from '@material-ui/core/Container';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
+import AnimatedLogo from 'components/AnimatedLogo';
 import Projects from 'pages/projects';
 import React from 'react';
 
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme =>
 export default function index() {
   const classes = useStyles();
 
-  const Intro = () => <div>Hello World</div>;
+  const Intro = () => <AnimatedLogo />;
   const About = () => <div>This is the about section</div>;
 
   const pageSections = [Intro, About, Projects];

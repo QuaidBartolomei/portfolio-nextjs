@@ -1,4 +1,5 @@
 import AppBar from '@material-ui/core/AppBar';
+import MailIcon from '@material-ui/icons/Mail';
 import Button from '@material-ui/core/Button';
 import Hidden from '@material-ui/core/Hidden';
 import IconButton from '@material-ui/core/IconButton';
@@ -13,6 +14,9 @@ import Container from '@material-ui/core/Container';
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     menuButton: {},
+    brandLinkButton: {
+      textTransform: 'none',
+    },
     title: {
       flexGrow: 1,
     },
@@ -50,7 +54,7 @@ export default function Navbar() {
   const BrandLink = () => (
     <div className={classes.title}>
       <Link passHref href='/'>
-        <Button color='inherit'>
+        <Button color='inherit' className={classes.brandLinkButton}>
           <Typography color='inherit' variant='h6'>
             qlb
           </Typography>
@@ -59,30 +63,23 @@ export default function Navbar() {
     </div>
   );
 
-  const ToolbarLinks = () => (
-    <Hidden xsDown>
-      {links.map(link => (
-        <Link href={link.href} passHref key={link.name}>
-          <Button color='inherit'>{link.name}</Button>
-        </Link>
-      ))}
-    </Hidden>
+  const ContactLinkButton = () => (
+    <Link href={'/contact'} passHref>
+      <Button variant='contained' endIcon={<MailIcon />}>
+        Contact
+      </Button>
+    </Link>
   );
 
   return (
     <>
-      <AppBar position='fixed' elevation={0}>
+      <AppBar position='fixed' elevation={0} color='transparent'>
         <Container maxWidth='lg'>
           <Toolbar>
             <BrandLink />
-            <ToolbarLinks />
+            <ContactLinkButton />
             <MenuButton />
           </Toolbar>
-          {showLinks && (
-            <div className={classes.linksContainer}>
-              <Link href='/projects'>Projects</Link>
-            </div>
-          )}
         </Container>
       </AppBar>
       <Toolbar />

@@ -8,6 +8,7 @@ import Navbar from 'components/Navbar';
 import type { AppProps } from 'next/app';
 import theme from 'pages/_theme';
 import React from 'react';
+import '@fontsource/roboto';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -21,7 +22,7 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-function MyApp({ Component, pageProps }: AppProps) {
+export default function MyApp({ Component, pageProps }: AppProps) {
   const classes = useStyles();
   return (
     <ThemeProvider theme={theme}>
@@ -31,5 +32,3 @@ function MyApp({ Component, pageProps }: AppProps) {
     </ThemeProvider>
   );
 }
-
-export default MyApp;
