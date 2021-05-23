@@ -1,10 +1,10 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { animated, useSpring, useSprings } from 'react-spring';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import theme from 'pages/_theme';
+import React from 'react';
+import { animated, useSpring } from 'react-spring';
 import { useHover } from 'react-use-gesture';
 
-const spacing = 1.5
+const spacing = 1.5;
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -13,14 +13,15 @@ const useStyles = makeStyles(theme =>
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      fontSize: theme.typography.h6.fontSize,
-      height: 64,
-      width: 64,
+      position: 'relative',
     },
     q: {
       paddingTop: theme.spacing(1),
     },
     l: {},
+    uaid: {
+      position: 'absolute',
+    },
     b: {
       paddingBottom: theme.spacing(1),
     },

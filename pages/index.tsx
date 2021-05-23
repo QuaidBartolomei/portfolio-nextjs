@@ -1,15 +1,20 @@
 import Container from '@material-ui/core/Container';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AnimatedLogo from 'components/AnimatedLogo';
+import Separator from 'components/Separator';
 import Projects from 'pages/projects';
 import React from 'react';
+import theme from 'pages/_theme';
+import blueGrey from '@material-ui/core/colors/blueGrey';
+
+const bg = [theme.palette.background.default, theme.palette.background.paper];
+const backgroundColors = {
+  hero: blueGrey[900],
+  aboutSection: blueGrey[500],
+};
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    parent: {
-      minHeight: '100vh',
-      width: '100%',
-    },
     container: {
       minHeight: '100vh',
       width: '100%',
@@ -17,9 +22,12 @@ const useStyles = makeStyles(theme =>
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
+      backgroundColor: 'inherit',
     },
-    bg1: { background: theme.palette.background.default },
-    bg2: { background: theme.palette.background.paper },
+    bg1: { background: bg[0] },
+    bg2: { background: bg[1] },
+    hero: { background: backgroundColors.hero },
+    aboutSection: { background: backgroundColors.aboutSection },
   })
 );
 
@@ -34,16 +42,21 @@ export default function index() {
 
   return (
     <>
-      {pageSections.map((Section, key) => (
-        <div key={key} className={`${classes.parent} ${bgClasses[key % 2]}`}>
-          <Container
-            className={`${classes.container} ${bgClasses[key % 2]}`}
-            maxWidth='lg'
-          >
-            <Section />
-          </Container>
-        </div>
-      ))}
+      <div className={classes.hero}>
+        <Container className={classes.container} maxWidth='lg'>
+          <Intro />
+        </Container>
+      </div>
+      <Separator
+        topColor={backgroundColors.hero}
+        bottomColor={backgroundColors.aboutSection}
+        type='zig-zag'
+      />
+      <div className={classes.aboutSection}>
+        <Container className={classes.container} maxWidth='lg'>
+          <About />
+        </Container>
+      </div>
     </>
   );
 }
