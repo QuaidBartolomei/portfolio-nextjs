@@ -6,11 +6,14 @@ import Projects from 'pages/projects';
 import React from 'react';
 import theme from 'pages/_theme';
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import Contact from '../components/Contact';
 
 const bg = [theme.palette.background.default, theme.palette.background.paper];
 const backgroundColors = {
   hero: blueGrey[900],
   aboutSection: blueGrey[500],
+  projectsSection: blueGrey[200],
+  contactSection: blueGrey[500],
 };
 
 const useStyles = makeStyles(theme =>
@@ -28,6 +31,8 @@ const useStyles = makeStyles(theme =>
     bg2: { background: bg[1] },
     hero: { background: backgroundColors.hero },
     aboutSection: { background: backgroundColors.aboutSection },
+    projectsSection: { background: backgroundColors.projectsSection },
+    contactSection: { background: backgroundColors.contactSection },
   })
 );
 
@@ -55,6 +60,26 @@ export default function index() {
       <div className={classes.aboutSection}>
         <Container className={classes.container} maxWidth='lg'>
           <About />
+        </Container>
+      </div>
+      <Separator
+        topColor={backgroundColors.aboutSection}
+        bottomColor={backgroundColors.projectsSection}
+        type='curve-down'
+      />
+      <div className={classes.projectsSection}>
+        <Container className={classes.container} maxWidth='lg'>
+          <Projects />
+        </Container>
+      </div>
+      <Separator
+        topColor={backgroundColors.projectsSection}
+        bottomColor={backgroundColors.contactSection}
+        type='curve-up'
+      />
+      <div className={classes.contactSection}>
+        <Container className={classes.container} maxWidth='lg'>
+          <Contact />
         </Container>
       </div>
     </>
