@@ -4,7 +4,7 @@ import React from 'react';
 import { animated, useSpring } from 'react-spring';
 import { useHover } from 'react-use-gesture';
 
-const spacing = 1.5;
+const spacing = '1em';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -15,49 +15,88 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'center',
       position: 'relative',
     },
-    q: {
-      paddingTop: theme.spacing(1),
+    l: {
+      paddingTop: '.2em',
     },
-    l: {},
     uaid: {
       position: 'absolute',
-    },
-    b: {
-      paddingBottom: theme.spacing(1),
     },
   })
 );
 
-export default function AnimatedLogo() {
+const positions = {
+  b: {
+    open: {
+      paddingBottom: spacing,
+    },
+    closed: {
+      paddingBottom: '0em',
+    },
+  },
+  q: {
+    open: {
+      paddingTop: spacing,
+    },
+    closed: {
+      paddingTop: '0em',
+    },
+  },
+};
+
+export default function AnimatedLogo({
+  startingPosition = 'closed',
+  moveToStart = false,
+}: {
+  startingPosition?: 'open' | 'closed';
+  moveToStart?:boolean
+}) {
   const classes = useStyles();
 
-  const [qSpring, qApi] = useSpring(() => ({
-    paddingTop: theme.spacing(spacing),
-  }));
+  const elements = {
+    b: {
+      startingPosition: positions.b[startingPosition],
+      endingPosition:
+        positions.b[startingPosition === 'open' ? 'closed' : 'open'],
+    },
+    q: {
+      startingPosition: positions.q[startingPosition],
+      endingPosition:
+        positions.q[startingPosition === 'open' ? 'closed' : 'open'],
+    },
+  };
 
-  const [bSpring, bApi] = useSpring(() => ({
-    paddingBottom: theme.spacing(spacing),
-  }));
+  const [qSpring, qApi] = useSpring(() => elements.q.startingPosition);
+  const [bSpring, bApi] = useSpring(() => elements.b.startingPosition);
+
+  const [position, setPosition] =
+    React.useState<'auto' | 'open' | 'closed'>('auto');
+
+  function close() {
+    startAnimation();
+    setPosition('closed');
+  }
+
+  function open() {
+    resetAnimation();
+    setPosition('open');
+  }
 
   function startAnimation() {
-    qApi.start({
-      paddingTop: 0,
-    });
-    bApi.start({
-      paddingBottom: 0,
-    });
+    qApi.stop();
+    bApi.stop();
+    qApi.start(elements.q.endingPosition);
+    bApi.start(elements.b.endingPosition);
   }
 
   function resetAnimation() {
-    qApi.start({
-      paddingTop: theme.spacing(spacing),
-    });
-    bApi.start({
-      paddingBottom: theme.spacing(spacing),
-    });
+    qApi.stop();
+    bApi.stop();
+    qApi.start(elements.q.startingPosition);
+    bApi.start(elements.b.startingPosition);
   }
 
   const bind = useHover(({ hovering }) => {
+    if (position !== 'auto') return;
     hovering && startAnimation();
     !hovering && resetAnimation();
   });
@@ -67,6 +106,17 @@ export default function AnimatedLogo() {
       {...bind()}
       className={classes.container}
       onFocus={() => console.log('focus')}
+      onClick={() => {
+        switch (position) {
+          case 'auto':
+          case 'open':
+            close();
+            break;
+          case 'closed':
+            open();
+            break;
+        }
+      }}
     >
       <animated.div style={qSpring}>q</animated.div>
       <div className={classes.l}>l</div>
