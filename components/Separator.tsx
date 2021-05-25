@@ -11,7 +11,8 @@ interface Props {
     | 'double-diagonal'
     | 'big-triangle'
     | 'curve-down'
-    | 'curve-up';
+    | 'curve-up'
+    | 'big-half-circle';
 }
 
 const dividerProperties: CSSProperties = {
@@ -153,6 +154,30 @@ export default function Separator(props: Props) {
             fill={props.bottomColor}
             stroke={props.bottomColor}
             d='M0 100 C 20 0 50 0 100 100 Z'
+          />
+        </svg>
+      </div>
+    ),
+    'big-half-circle': (
+      <div
+        style={{
+          backgroundColor: props.bottomColor,
+        }}
+      >
+        <svg
+          id='bigHalfCircle'
+          xmlns='http://www.w3.org/2000/svg'
+          version='1.1'
+          width='100%'
+          height='100'
+          viewBox='0 0 100 100'
+          preserveAspectRatio='none'
+          transform='scale(1 -1)'
+        >
+          <path
+            d='M0 100 C40 0 60 0 100 100 Z'
+            fill={props.topColor}
+            stroke={props.topColor}
           />
         </svg>
       </div>

@@ -1,8 +1,8 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import theme from 'pages/_theme';
+import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import React from 'react';
-import { animated, useSpring } from 'react-spring';
-import { useHover } from 'react-use-gesture';
+import { Fade } from 'react-awesome-reveal';
+import { animated, useChain, useSpring, useSpringRef } from 'react-spring';
 
 const spacing = '1em';
 
@@ -12,14 +12,30 @@ const useStyles = makeStyles(theme =>
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       position: 'relative',
+      minWidth: 300,
     },
     l: {
       paddingTop: '.2em',
     },
-    uaid: {
+    artolomei: {
+      fontSize: '.5em',
       position: 'absolute',
+      top: '0.9em',
+      left: '2.6em',
+    },
+    ouis: {
+      fontSize: '.5em',
+      position: 'absolute',
+      top: '2em',
+      left: '1.5em',
+    },
+    uaid: {
+      fontSize: '.5em',
+      position: 'absolute',
+      top: '3em',
+      left: '1em',
     },
   })
 );
@@ -43,84 +59,68 @@ const positions = {
   },
 };
 
-export default function AnimatedLogo({
-  startingPosition = 'closed',
-  moveToStart = false,
-}: {
+interface Props {
   startingPosition?: 'open' | 'closed';
-  moveToStart?:boolean
-}) {
+  moveToStart?: boolean;
+}
+
+export default function AnimatedLogo({}: Props) {
   const classes = useStyles();
 
-  const elements = {
-    b: {
-      startingPosition: positions.b[startingPosition],
-      endingPosition:
-        positions.b[startingPosition === 'open' ? 'closed' : 'open'],
-    },
-    q: {
-      startingPosition: positions.q[startingPosition],
-      endingPosition:
-        positions.q[startingPosition === 'open' ? 'closed' : 'open'],
-    },
+  const [hasPlayed, setHasPlayed] = React.useState(false);
+  const [showOtherLetters, setShowOtherLetters] = React.useState(false);
+
+  const scrollTrigger = useScrollTrigger({
+    disableHysteresis: true,
+  });
+
+  const options = {
+    reverse: scrollTrigger,
+    delay: hasPlayed ? 0 : 800,
   };
 
-  const [qSpring, qApi] = useSpring(() => elements.q.startingPosition);
-  const [bSpring, bApi] = useSpring(() => elements.b.startingPosition);
+  const otherLetters = useSpring({
+    opacity: !scrollTrigger ? 1 : 0,
+    height: !scrollTrigger ? 60 : 0,
+  });
 
-  const [position, setPosition] =
-    React.useState<'auto' | 'open' | 'closed'>('auto');
+  const qSpring = useSpring({
+    from: positions.q.closed,
+    to: positions.q.open,
+    onStart: () => {
+      setShowOtherLetters(false);
+    },
 
-  function close() {
-    startAnimation();
-    setPosition('closed');
-  }
+    onRest: () => {
+      setHasPlayed(true);
+      setShowOtherLetters(state => !state);
+    },
+    ...options,
+  });
 
-  function open() {
-    resetAnimation();
-    setPosition('open');
-  }
-
-  function startAnimation() {
-    qApi.stop();
-    bApi.stop();
-    qApi.start(elements.q.endingPosition);
-    bApi.start(elements.b.endingPosition);
-  }
-
-  function resetAnimation() {
-    qApi.stop();
-    bApi.stop();
-    qApi.start(elements.q.startingPosition);
-    bApi.start(elements.b.startingPosition);
-  }
-
-  const bind = useHover(({ hovering }) => {
-    if (position !== 'auto') return;
-    hovering && startAnimation();
-    !hovering && resetAnimation();
+  const bSpring = useSpring({
+    from: positions.b.closed,
+    to: positions.b.open,
+    ...options,
   });
 
   return (
-    <div
-      {...bind()}
-      className={classes.container}
-      onFocus={() => console.log('focus')}
-      onClick={() => {
-        switch (position) {
-          case 'auto':
-          case 'open':
-            close();
-            break;
-          case 'closed':
-            open();
-            break;
-        }
-      }}
-    >
-      <animated.div style={qSpring}>q</animated.div>
-      <div className={classes.l}>l</div>
-      <animated.div style={bSpring}>b</animated.div>
-    </div>
+    <Fade>
+      <div className={classes.container}>
+        <animated.div style={qSpring}>q</animated.div>
+        <div className={classes.l}>l</div>
+        <animated.div style={bSpring}>b</animated.div>
+
+        {hasPlayed && (
+          <Fade>
+            <animated.div style={otherLetters}>
+              <div className={classes.uaid}>uaid</div>
+              <div className={classes.ouis}>ouis</div>
+              <div className={classes.artolomei}>artolomei</div>
+            </animated.div>
+          </Fade>
+        )}
+      </div>
+    </Fade>
   );
 }

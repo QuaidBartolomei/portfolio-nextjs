@@ -1,18 +1,18 @@
+import { Typography } from '@material-ui/core';
+import blueGrey from '@material-ui/core/colors/blueGrey';
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AnimatedLogo from 'components/AnimatedLogo';
 import Separator from 'components/Separator';
 import Projects from 'pages/projects';
 import React from 'react';
-import theme from 'pages/_theme';
-import blueGrey from '@material-ui/core/colors/blueGrey';
-import Contact from '../components/Contact';
-import { Typography } from '@material-ui/core';
 import { Element } from 'react-scroll';
+import Contact from 'components/Contact';
+import TechShowcase from 'components/TechShowcase';
 
 const backgroundColors = {
-  hero: blueGrey[900],
-  aboutSection: blueGrey[500],
+  hero: blueGrey[200],
+  aboutSection: blueGrey[900],
   projectsSection: blueGrey[200],
   contactSection: blueGrey[500],
 };
@@ -26,10 +26,12 @@ const useStyles = makeStyles(theme =>
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      backgroundColor: 'inherit',
+      backgroundColor: 'transparent',
     },
     hero: { background: backgroundColors.hero },
-    aboutSection: { background: backgroundColors.aboutSection },
+    aboutSection: {
+      backgroundColor: backgroundColors.aboutSection,
+    },
     projectsSection: { background: backgroundColors.projectsSection },
     contactSection: { background: backgroundColors.contactSection },
   })
@@ -40,10 +42,10 @@ export default function index() {
 
   const Hero = () => (
     <Typography variant='h1'>
-      <AnimatedLogo startingPosition='open' />
+      <AnimatedLogo />
     </Typography>
   );
-  const About = () => <div>This is the about section</div>;
+  const About = () => <TechShowcase />;
 
   return (
     <>
@@ -75,7 +77,7 @@ export default function index() {
       <Separator
         topColor={backgroundColors.projectsSection}
         bottomColor={backgroundColors.contactSection}
-        type='big-triangle'
+        type='big-half-circle'
       />
       <Element name='contact'>
         <div className={classes.contactSection}>

@@ -6,9 +6,10 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import MailIcon from '@material-ui/icons/Mail';
 import { Link } from 'react-scroll';
-import React from 'react';
+import React, { useState } from 'react';
 import { animateScroll } from 'react-scroll';
 import AnimatedLogo from './AnimatedLogo';
+import DraftsIcon from '@material-ui/icons/Drafts';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -39,19 +40,31 @@ export default function Navbar() {
           variant='h6'
           style={{ width: '100%', height: '100%' }}
         >
-          <AnimatedLogo />
+        qlb
         </Typography>
       </Button>
     </div>
   );
 
-  const ContactLinkButton = () => (
-    <Link to='contact' spy={true} smooth={true}>
-      <Button variant='contained' endIcon={<MailIcon />}>
-        Contact
-      </Button>
-    </Link>
-  );
+  const ContactLinkButton = () => {
+    const [selected, setSelected] = useState(false);
+    return (
+      <Link
+        to='contact'
+        spy={true}
+        onSetActive={() => setSelected(true)}
+        onSetInactive={() => setSelected(false)}
+        smooth={true}
+      >
+        <Button
+          variant='contained'
+          endIcon={selected ? <DraftsIcon /> : <MailIcon />}
+        >
+          Contact
+        </Button>
+      </Link>
+    );
+  };
 
   return (
     <AppBar position='fixed' elevation={0} color='transparent'>
