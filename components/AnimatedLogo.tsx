@@ -1,57 +1,52 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import React from 'react';
-import { Fade } from 'react-awesome-reveal';
 import { animated, useChain, useSpring, useSpringRef } from 'react-spring';
-
-const spacing = '1em';
 
 const useStyles = makeStyles(theme =>
   createStyles({
     container: {
       display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    bigLettersContainer: {
+      display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       position: 'relative',
       minWidth: 300,
     },
     l: {
-      paddingTop: '.2em',
     },
-    artolomei: {
-      fontSize: '.5em',
-      position: 'absolute',
-      top: '0.9em',
-      left: '2.6em',
+    otherLettersContainer: {
+      fontSize: '.4em',
     },
-    ouis: {
-      fontSize: '.5em',
-      position: 'absolute',
-      top: '2em',
-      left: '1.5em',
+    smallLetters: {
+      fontSize: '.4em',
+      opacity: 0,
+      height: 0,
     },
-    uaid: {
-      fontSize: '.5em',
-      position: 'absolute',
-      top: '3em',
-      left: '1em',
+    bigLetter: {
+      position: 'relative',
     },
   })
 );
 
 const positions = {
-  b: {
-    open: {
-      paddingBottom: spacing,
-    },
-    closed: {
-      paddingBottom: '0em',
-    },
-  },
   q: {
     open: {
-      paddingTop: spacing,
+      paddingBottom: '1.8em',
+    },
+    closed: {
+      paddingBottom: '0.4em',
+    },
+  },
+  b: {
+    open: {
+      paddingTop: '1.8em',
     },
     closed: {
       paddingTop: '0em',
@@ -66,9 +61,7 @@ interface Props {
 
 export default function AnimatedLogo({}: Props) {
   const classes = useStyles();
-
   const [hasPlayed, setHasPlayed] = React.useState(false);
-  const [showOtherLetters, setShowOtherLetters] = React.useState(false);
 
   const scrollTrigger = useScrollTrigger({
     disableHysteresis: true,
@@ -79,48 +72,49 @@ export default function AnimatedLogo({}: Props) {
     delay: hasPlayed ? 0 : 800,
   };
 
+  const otherLettersSpringRef = useSpringRef();
   const otherLetters = useSpring({
-    opacity: !scrollTrigger ? 1 : 0,
-    height: !scrollTrigger ? 60 : 0,
+    from: {
+      opacity: 0,
+      height: 0,
+    },
+    to: {
+      opacity: 1,
+      height: 60,
+    },
+    ref: otherLettersSpringRef,
   });
 
-  const qSpring = useSpring({
-    from: positions.q.closed,
-    to: positions.q.open,
-    onStart: () => {
-      setShowOtherLetters(false);
-    },
+  const qSpringRef = useSpringRef();
 
-    onRest: () => {
-      setHasPlayed(true);
-      setShowOtherLetters(state => !state);
-    },
-    ...options,
+  const qSpring = useSpring({
+    from: positions.q.open,
+    to: positions.q.closed,
+    ref: qSpringRef,
   });
 
   const bSpring = useSpring({
-    from: positions.b.closed,
-    to: positions.b.open,
-    ...options,
+    from: positions.b.open,
+    to: positions.b.closed,
+    ref: qSpringRef,
   });
 
-  return (
-    <Fade>
-      <div className={classes.container}>
-        <animated.div style={qSpring}>q</animated.div>
-        <div className={classes.l}>l</div>
-        <animated.div style={bSpring}>b</animated.div>
+  useChain([qSpringRef, otherLettersSpringRef], [0.5, 1]);
 
-        {hasPlayed && (
-          <Fade>
-            <animated.div style={otherLetters}>
-              <div className={classes.uaid}>uaid</div>
-              <div className={classes.ouis}>ouis</div>
-              <div className={classes.artolomei}>artolomei</div>
-            </animated.div>
-          </Fade>
-        )}
+  return (
+    <div className={classes.container}>
+      <div className={classes.bigLettersContainer}>
+        <animated.div style={qSpring} className={classes.bigLetter}>
+          q
+        </animated.div>
+        <div className={`${classes.l} ${classes.bigLetter}`}>l</div>
+        <animated.div style={bSpring} className={classes.bigLetter}>
+          b
+        </animated.div>
       </div>
-    </Fade>
+      <animated.div style={otherLetters} className={classes.smallLetters}>
+        Quaid Louis Bartolomei
+      </animated.div>
+    </div>
   );
 }
