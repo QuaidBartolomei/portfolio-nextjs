@@ -25,20 +25,18 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-const screenshot = '/e-commerce_screenshot.png';
-
 const projects: ProjectItemProps[] = [
   {
     name: 'CAB Clothing',
     description: 'E commerce site made with React, Typescript and Firebase.',
-    imageUrl: screenshot,
+    imageUrl: '/e-commerce_screenshot.png',
     github: '#',
     demo: 'https://e-commerce-indol.vercel.app/',
   },
   {
     name: 'Drawnit',
     description: 'Draw on an html canvas with your friends',
-    imageUrl: screenshot,
+    imageUrl: '/drawnit_screenshot.png',
     github: '#',
     demo: '#',
   },
