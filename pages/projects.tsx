@@ -7,12 +7,13 @@ const useStyles = makeStyles(theme =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'space-evenly',
+      justifyContent: 'center',
       width: '100%',
       minHeight: '100%',
       flexWrap: 'wrap',
       '&>*': {
-        margin: theme.spacing(1),
+        marginTop: theme.spacing(3),
+        marginBottom: theme.spacing(3),
       },
     },
     fader: {
@@ -32,6 +33,12 @@ const projects: ProjectItemProps[] = [
     imageUrl: '/e-commerce_screenshot.png',
     github: '#',
     demo: 'https://e-commerce-indol.vercel.app/',
+    technologiesUsed:[
+      'React',
+      'Typescript',
+      'Firebase',
+      'Material-UI',
+    ]
   },
   {
     name: 'Drawnit',
@@ -39,6 +46,13 @@ const projects: ProjectItemProps[] = [
     imageUrl: '/drawnit_screenshot.png',
     github: '#',
     demo: '#',
+    technologiesUsed:[
+      'React',
+      'Typescript',
+      'Node',
+      'MongoDB',
+      'Material-UI',
+    ]
   },
 ];
 

@@ -12,18 +12,15 @@ import React, { useState } from 'react';
 import { animateScroll, Link } from 'react-scroll';
 import { animated } from 'react-spring';
 
-const brandLinkCircleSize = 64;
+const brandLinkCircleSize = 58;
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     menuButton: {},
     brandLinkButton: {
       textTransform: 'none',
-      margin: 4,
       height: brandLinkCircleSize,
       width: brandLinkCircleSize,
-      borderRadius: brandLinkCircleSize,
-      border: '3px solid black',
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
@@ -38,7 +35,7 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100%',
       width: '100%',
       position: 'absolute',
-      backgroundColor: 'white',
+      backgroundColor: theme.palette.primary.main,
     },
     brandLinkButtonContainer: {
       height: brandLinkCircleSize,
@@ -53,13 +50,17 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
+export enum PageAnchors {
+  contact = 'contact',
+  projects = 'projects',
+}
+
 export default function Navbar() {
   const classes = useStyles();
 
   const BrandLink = () => (
     <Button
       onClick={animateScroll.scrollToTop}
-      color='inherit'
       className={classes.brandLinkButton}
     >
       <Typography
@@ -70,6 +71,12 @@ export default function Navbar() {
         qlb
       </Typography>
     </Button>
+  );
+
+  const NavLink = () => (
+    <Link to='contact' spy={true} smooth={true}>
+      <Button>Projects</Button>
+    </Link>
   );
 
   const ContactLinkButton = () => {
@@ -94,13 +101,13 @@ export default function Navbar() {
 
   const scrollTrigger = useScrollTrigger();
   const spring = useSpring({
-    opacity: scrollTrigger ? 0 : 1,
+    opacity: scrollTrigger ? 1 : 0,
   });
 
   return (
     <AppBar position='fixed' elevation={0} color='transparent'>
       <animated.div className={classes.background} style={spring} />
-      <Container maxWidth='lg'>
+      <Container maxWidth='lg' disableGutters>
         <Toolbar>
           <div className={classes.title}>
             <BrandLink />

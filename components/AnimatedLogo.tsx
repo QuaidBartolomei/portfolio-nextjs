@@ -113,7 +113,12 @@ export default function AnimatedLogo({}: Props) {
         </animated.div>
       </div>
       <animated.div style={otherLetters} className={classes.smallLetters}>
-        Quaid Louis Bartolomei
+        Quaid
+        <br/>
+         Louis
+         
+        <br/>
+          Bartolomei
       </animated.div>
     </div>
   );

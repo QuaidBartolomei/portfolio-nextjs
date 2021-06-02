@@ -19,7 +19,10 @@ const useStyles = makeStyles(theme =>
       maxWidth: 600,
       display: 'flex',
       flexDirection: 'column',
-      '&>*': { margin: 10 },
+      '&>*': {
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+      },
     },
   })
 );
@@ -39,7 +42,7 @@ export default function Contact() {
           rows={9}
           variant='outlined'
         />
-        <Button variant='contained' color='primary' endIcon={<SendIcon />}>
+        <Button variant='contained' color='secondary' endIcon={<SendIcon />}>
           Send
         </Button>
       </form>
