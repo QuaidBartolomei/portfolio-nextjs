@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ProjectItem, { ProjectItemProps } from 'components/ProjectItem';
 
@@ -33,12 +34,7 @@ const projects: ProjectItemProps[] = [
     imageUrl: '/e-commerce_screenshot.png',
     github: '#',
     demo: 'https://e-commerce-indol.vercel.app/',
-    technologiesUsed:[
-      'React',
-      'Typescript',
-      'Firebase',
-      'Material-UI',
-    ]
+    technologiesUsed: ['React', 'Typescript', 'Firebase', 'Material-UI'],
   },
   {
     name: 'Drawnit',
@@ -46,13 +42,7 @@ const projects: ProjectItemProps[] = [
     imageUrl: '/drawnit_screenshot.png',
     github: '#',
     demo: '#',
-    technologiesUsed:[
-      'React',
-      'Typescript',
-      'Node',
-      'MongoDB',
-      'Material-UI',
-    ]
+    technologiesUsed: ['React', 'Typescript', 'Node', 'MongoDB', 'Material-UI'],
   },
 ];
 
@@ -60,6 +50,7 @@ export default function Projects() {
   const classes = useStyles();
   return (
     <div className={classes.container}>
+      <Typography variant='h3'>Recent Projects</Typography>
       {projects.map(project => (
         <ProjectItem {...project} github='#' demo='#' key={project.name} />
       ))}

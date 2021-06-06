@@ -13,6 +13,7 @@ const useStyles = makeStyles(theme =>
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+      marginBottom:theme.spacing(2)
     },
     form: {
       width: '100%',

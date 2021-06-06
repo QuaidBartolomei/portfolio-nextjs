@@ -1,4 +1,5 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import React from 'react';
 import { animated, useChain, useSpring, useSpringRef } from 'react-spring';
@@ -7,8 +8,14 @@ const useStyles = makeStyles(theme =>
   createStyles({
     container: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'center',
+      justifyContent: 'center',
+    },
+    smallLettersContainer: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'flex-start',
       justifyContent: 'center',
     },
     bigLettersContainer: {
@@ -17,17 +24,11 @@ const useStyles = makeStyles(theme =>
       alignItems: 'center',
       justifyContent: 'center',
       position: 'relative',
-      minWidth: 300,
+      marginRight: theme.spacing(2),
     },
-    l: {
-    },
-    otherLettersContainer: {
-      fontSize: '.4em',
-    },
+    l: {},
     smallLetters: {
-      fontSize: '.4em',
       opacity: 0,
-      height: 0,
     },
     bigLetter: {
       position: 'relative',
@@ -61,26 +62,14 @@ interface Props {
 
 export default function AnimatedLogo({}: Props) {
   const classes = useStyles();
-  const [hasPlayed, setHasPlayed] = React.useState(false);
-
-  const scrollTrigger = useScrollTrigger({
-    disableHysteresis: true,
-  });
-
-  const options = {
-    reverse: scrollTrigger,
-    delay: hasPlayed ? 0 : 800,
-  };
 
   const otherLettersSpringRef = useSpringRef();
   const otherLetters = useSpring({
     from: {
       opacity: 0,
-      height: 0,
     },
     to: {
       opacity: 1,
-      height: 60,
     },
     ref: otherLettersSpringRef,
   });
@@ -103,7 +92,11 @@ export default function AnimatedLogo({}: Props) {
 
   return (
     <div className={classes.container}>
-      <div className={classes.bigLettersContainer}>
+      <Typography
+        variant='h1'
+        component='div'
+        className={classes.bigLettersContainer}
+      >
         <animated.div style={qSpring} className={classes.bigLetter}>
           q
         </animated.div>
@@ -111,15 +104,18 @@ export default function AnimatedLogo({}: Props) {
         <animated.div style={bSpring} className={classes.bigLetter}>
           b
         </animated.div>
-      </div>
-      <animated.div style={otherLetters} className={classes.smallLetters}>
-        Quaid
-        <br/>
-         Louis
-         
-        <br/>
-          Bartolomei
-      </animated.div>
+      </Typography>
+      <Typography variant='body1' className={classes.smallLettersContainer}>
+        <animated.div style={otherLetters} className={classes.smallLetters}>
+          quaid
+        </animated.div>
+        <animated.div style={otherLetters} className={classes.smallLetters}>
+          louis
+        </animated.div>
+        <animated.div style={otherLetters} className={classes.smallLetters}>
+          bartolomei
+        </animated.div>
+      </Typography>
     </div>
   );
 }

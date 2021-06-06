@@ -9,6 +9,8 @@ import React from 'react';
 import { Element } from 'react-scroll';
 import Contact from 'components/Contact';
 import TechShowcase from 'components/TechShowcase';
+import Exhibit from 'components/Exhibit';
+import IntroSection from 'components/Intro/IntroSection';
 
 const backgroundColors = {
   hero: blueGrey[200],
@@ -50,9 +52,7 @@ export default function index() {
   return (
     <>
       <div className={classes.hero}>
-        <Container className={classes.container} maxWidth='lg'>
-          <Hero />
-        </Container>
+        <IntroSection />
       </div>
       <Separator
         topColor={backgroundColors.hero}
@@ -60,6 +60,7 @@ export default function index() {
         type='curve-down'
       />
       <div className={classes.aboutSection}>
+        <Exhibit />
         <Container className={classes.container} maxWidth='lg'>
           <About />
         </Container>
