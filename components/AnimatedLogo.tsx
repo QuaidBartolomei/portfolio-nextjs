@@ -1,6 +1,5 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import useScrollTrigger from '@material-ui/core/useScrollTrigger';
 import React from 'react';
 import { animated, useChain, useSpring, useSpringRef } from 'react-spring';
 
@@ -74,21 +73,21 @@ export default function AnimatedLogo({}: Props) {
     ref: otherLettersSpringRef,
   });
 
-  const qSpringRef = useSpringRef();
+  const bigLettersSpringRef = useSpringRef();
 
   const qSpring = useSpring({
     from: positions.q.open,
     to: positions.q.closed,
-    ref: qSpringRef,
+    ref: bigLettersSpringRef,
   });
 
   const bSpring = useSpring({
     from: positions.b.open,
     to: positions.b.closed,
-    ref: qSpringRef,
+    ref: bigLettersSpringRef,
   });
 
-  useChain([qSpringRef, otherLettersSpringRef], [0.5, 1]);
+  useChain([bigLettersSpringRef, otherLettersSpringRef], [0.5, 1]);
 
   return (
     <div className={classes.container}>
@@ -105,6 +104,7 @@ export default function AnimatedLogo({}: Props) {
           b
         </animated.div>
       </Typography>
+      <div style={{ width : 8 }} />
       <Typography variant='body1' className={classes.smallLettersContainer}>
         <animated.div style={otherLetters} className={classes.smallLetters}>
           quaid

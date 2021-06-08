@@ -1,4 +1,5 @@
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
@@ -7,13 +8,18 @@ import React from 'react';
 
 const useStyles = makeStyles(theme =>
   createStyles({
+    background: {
+      position: 'relative',
+      backgroundColor: '#1D3557',
+    },
     container: {
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
-      marginBottom:theme.spacing(2)
+      paddingBottom: theme.spacing(2),
+      paddingTop: theme.spacing(2),
     },
     form: {
       width: '100%',
@@ -31,22 +37,24 @@ const useStyles = makeStyles(theme =>
 export default function Contact() {
   const classes = useStyles();
   return (
-    <div className={classes.container}>
-      <Typography variant='h4'>Contact Me</Typography>
-      <form className={classes.form}>
-        <TextField id='outlined-basic' label='Name' variant='outlined' />
-        <TextField id='outlined-basic' label='Email' variant='outlined' />
-        <TextField
-          id='outlined-multiline-static'
-          label='Message'
-          multiline
-          rows={9}
-          variant='outlined'
-        />
-        <Button variant='contained' color='secondary' endIcon={<SendIcon />}>
-          Send
-        </Button>
-      </form>
+    <div className={classes.background}>
+      <Container className={classes.container} maxWidth='lg'>
+        <Typography variant='h4'>Contact Me</Typography>
+        <form className={classes.form}>
+          <TextField id='outlined-basic' label='Name' variant='outlined' />
+          <TextField id='outlined-basic' label='Email' variant='outlined' />
+          <TextField
+            id='outlined-multiline-static'
+            label='Message'
+            multiline
+            rows={9}
+            variant='outlined'
+          />
+          <Button variant='contained' color='secondary' endIcon={<SendIcon />}>
+            Send
+          </Button>
+        </form>
+      </Container>
     </div>
   );
 }

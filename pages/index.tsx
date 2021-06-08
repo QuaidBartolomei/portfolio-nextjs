@@ -15,8 +15,8 @@ import IntroSection from 'components/Intro/IntroSection';
 const backgroundColors = {
   hero: blueGrey[200],
   aboutSection: blueGrey[900],
-  projectsSection: blueGrey[200],
-  contactSection: blueGrey[500],
+  projectsSection: blueGrey[500],
+  contactSection: blueGrey[700],
 };
 
 const useStyles = makeStyles(theme =>
@@ -51,41 +51,12 @@ export default function index() {
 
   return (
     <>
-      <div className={classes.hero}>
-        <IntroSection />
-      </div>
-      <Separator
-        topColor={backgroundColors.hero}
-        bottomColor={backgroundColors.aboutSection}
-        type='curve-down'
-      />
-      <div className={classes.aboutSection}>
-        <Exhibit />
-        <Container className={classes.container} maxWidth='lg'>
-          <About />
-        </Container>
-      </div>
-      <Separator
-        topColor={backgroundColors.aboutSection}
-        bottomColor={backgroundColors.projectsSection}
-        type='curve-up'
-      />
-      <div className={classes.projectsSection}>
-        <Container className={classes.container} maxWidth='lg'>
-          <Projects />
-        </Container>
-      </div>
-      <Separator
-        topColor={backgroundColors.projectsSection}
-        bottomColor={backgroundColors.contactSection}
-        type='big-half-circle'
-      />
+      <IntroSection />
+
+        <Projects />
+
       <Element name='contact'>
-        <div className={classes.contactSection}>
-          <Container className={classes.container} maxWidth='lg'>
             <Contact />
-          </Container>
-        </div>
       </Element>
     </>
   );
