@@ -45,22 +45,18 @@ const useStyles = makeStyles(theme =>
       maxWidth: width,
     },
     details: {
-      display: 'flex',
-      flexDirection: 'column',
-      justifyContent: 'flex-start',
-      alignItems: 'flex-start',
       width,
-      maxWidth: width,
-      flexGrow: 1,
       hyphens: 'none',
+      padding: theme.spacing(2)
     },
     projectsContainer: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
+      flexWrap:'wrap',
       '&>*': {
-        margin: theme.spacing(2),
+        margin: theme.spacing(1),
       },
     },
   })
@@ -81,7 +77,8 @@ export default function ProjectItem(props: ProjectItemProps) {
 
   return (
     <div className={classes.projectsContainer}>
-      <BackdroppedContent bottom left spacing={2}>
+      <BackdroppedContent top left spacing={2}>
+        <Paper className={''}>
         <img
           style={{
             height: 180,
@@ -89,9 +86,10 @@ export default function ProjectItem(props: ProjectItemProps) {
           }}
           src={imageUrl}
         />
+        </Paper>
       </BackdroppedContent>
-      <BackdroppedContent top right spacing={2}>
-        <Paper style={{ padding: 16 }}>
+      <BackdroppedContent bottom right spacing={2}>
+        <Paper className={classes.details}>
           <ProjectDetails {...props} />
         </Paper>
       </BackdroppedContent>

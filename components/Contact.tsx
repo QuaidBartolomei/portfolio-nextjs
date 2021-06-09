@@ -10,7 +10,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     background: {
       position: 'relative',
-      backgroundColor: '#1D3557',
+      backgroundColor: theme.palette.background.default,
     },
     container: {
       width: '100%',
@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme =>
       flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',
+      minHeight:'100vh',
       paddingBottom: theme.spacing(2),
       paddingTop: theme.spacing(2),
     },

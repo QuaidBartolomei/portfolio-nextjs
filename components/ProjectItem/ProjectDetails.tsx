@@ -42,8 +42,15 @@ interface Props {
 export default function ProjectDetails(
   props: HTMLAttributes<HTMLDivElement> & Props
 ) {
-  const { name, demo, github, technologiesUsed, description, ...divProps } =
-    props;
+  const {
+    imageUrl,
+    name,
+    demo,
+    github,
+    technologiesUsed,
+    description,
+    ...divProps
+  } = props;
   const classes = useStyles();
   const Title = () => (
     <Typography gutterBottom variant='h5' component='h2'>

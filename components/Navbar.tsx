@@ -26,6 +26,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       justifyContent: 'center',
       padding: 0,
+      color:theme.palette.primary.light
     },
     title: {
       flexGrow: 1,
@@ -68,7 +69,7 @@ export default function Navbar() {
         variant='h6'
         style={{ width: '100%', height: '100%' }}
       >
-        qlb
+        Quaid
       </Typography>
     </Button>
   );

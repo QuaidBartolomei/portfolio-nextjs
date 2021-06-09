@@ -1,12 +1,9 @@
 import { Typography } from '@material-ui/core';
+import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ProjectItem, {
-  ProjectItemProps,
+  ProjectItemProps
 } from 'components/ProjectItem/ProjectItem';
-import Container from '@material-ui/core/Container';
-import Paper from '@material-ui/core/Paper';
-import BackdroppedContent from 'components/BackdroppedContent';
-import ProjectDetails from 'components/ProjectItem/ProjectDetails';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -73,22 +70,6 @@ export default function Projects() {
     <div className={classes.background}>
       <Container className={classes.container} maxWidth='lg'>
         <Typography variant='h4'>Recent Projects</Typography>
-        <div className={classes.projectsContainer}>
-          <BackdroppedContent bottom left spacing={2}>
-            <img
-              style={{
-                height: 180,
-                width: 320,
-              }}
-              src={projects[1].imageUrl}
-            />
-          </BackdroppedContent>
-          <BackdroppedContent top right spacing={2}>
-            <Paper style={{ padding: 16 }}>
-              <ProjectDetails {...projects[1]} />
-            </Paper>
-          </BackdroppedContent>
-        </div>
         {projects.map(project => (
           <ProjectItem {...project} github='#' demo='#' key={project.name} />
         ))}

@@ -11,6 +11,7 @@ import Contact from 'components/Contact';
 import TechShowcase from 'components/TechShowcase';
 import Exhibit from 'components/Exhibit';
 import IntroSection from 'components/Intro/IntroSection';
+import Footer from 'components/Footer';
 
 const backgroundColors = {
   hero: blueGrey[200],
@@ -52,12 +53,11 @@ export default function index() {
   return (
     <>
       <IntroSection />
-
         <Projects />
-
       <Element name='contact'>
             <Contact />
       </Element>
+      <Footer />
     </>
   );
 }

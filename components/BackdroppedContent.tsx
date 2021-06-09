@@ -1,5 +1,5 @@
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React, { HTMLAttributes } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
 
 interface Props {
   top?: boolean;
@@ -40,7 +40,7 @@ const useStyles = makeStyles(theme =>
         right: left ? theme.spacing(spacing) : 'auto',
         bottom: top ? theme.spacing(spacing) : 'auto',
         left: right ? theme.spacing(spacing) : 'auto',
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.primary.dark,
       };
     },
   })
