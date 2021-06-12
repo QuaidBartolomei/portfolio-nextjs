@@ -1,17 +1,15 @@
 import { Typography } from '@material-ui/core';
 import blueGrey from '@material-ui/core/colors/blueGrey';
-import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import AboutSection from 'components/AboutSection/AboutSection';
 import AnimatedLogo from 'components/AnimatedLogo';
-import Separator from 'components/Separator';
+import Contact from 'components/Contact';
+import Footer from 'components/Footer';
+import IntroSection from 'components/Intro/IntroSection';
+import TechShowcase from 'components/AboutSection/TechShowcase';
 import Projects from 'pages/projects';
 import React from 'react';
 import { Element } from 'react-scroll';
-import Contact from 'components/Contact';
-import TechShowcase from 'components/TechShowcase';
-import Exhibit from 'components/Exhibit';
-import IntroSection from 'components/Intro/IntroSection';
-import Footer from 'components/Footer';
 
 const backgroundColors = {
   hero: blueGrey[200],
@@ -22,6 +20,10 @@ const backgroundColors = {
 
 const useStyles = makeStyles(theme =>
   createStyles({
+    background: {
+      position: 'relative',
+      backgroundColor: theme.palette.background.default,
+    },
     container: {
       minHeight: '100vh',
       width: '100%',
@@ -53,11 +55,14 @@ export default function index() {
   return (
     <>
       <IntroSection />
-        <Projects />
+    <div className={classes.background}>
+      <AboutSection />
+      <Projects />
       <Element name='contact'>
-            <Contact />
+        <Contact />
       </Element>
       <Footer />
+    </div>
     </>
   );
 }

@@ -3,11 +3,12 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import {
   createStyles,
   makeStyles,
-  ThemeProvider
+  ThemeProvider,
 } from '@material-ui/core/styles';
 import type { AppProps } from 'next/app';
 import theme from 'pages/_theme';
 import React from 'react';
+
 
 const useStyles = makeStyles(theme =>
   createStyles({

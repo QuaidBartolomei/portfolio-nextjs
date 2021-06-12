@@ -16,11 +16,10 @@ const useStyles = makeStyles(theme =>
       width: '100%',
       display: 'flex',
       flexDirection: 'column',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       alignItems: 'center',
       minHeight:'100vh',
       paddingBottom: theme.spacing(2),
-      paddingTop: theme.spacing(2),
     },
     form: {
       width: '100%',
@@ -32,6 +31,8 @@ const useStyles = makeStyles(theme =>
         marginBottom: theme.spacing(1),
       },
     },
+    title:{
+    }
   })
 );
 
@@ -40,7 +41,10 @@ export default function Contact() {
   return (
     <div className={classes.background}>
       <Container className={classes.container} maxWidth='lg'>
-        <Typography variant='h4'>Contact Me</Typography>
+        <Typography
+        className={classes.title}
+      paragraph
+        variant='h4'>Contact Me</Typography>
         <form className={classes.form}>
           <TextField id='outlined-basic' label='Name' variant='outlined' />
           <TextField id='outlined-basic' label='Email' variant='outlined' />
@@ -51,7 +55,7 @@ export default function Contact() {
             rows={9}
             variant='outlined'
           />
-          <Button variant='contained' color='secondary' endIcon={<SendIcon />}>
+          <Button variant='contained' color='primary' endIcon={<SendIcon />}>
             Send
           </Button>
         </form>

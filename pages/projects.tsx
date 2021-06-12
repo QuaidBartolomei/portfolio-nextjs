@@ -2,44 +2,28 @@ import { Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import ProjectItem, {
-  ProjectItemProps
+  ProjectItemProps,
 } from 'components/ProjectItem/ProjectItem';
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    background: {
-      position: 'relative',
-      backgroundColor: theme.palette.background.default,
-    },
     container: {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'flex-start',
       width: '100%',
       minHeight: '100%',
       flexWrap: 'wrap',
-      paddingTop: theme.spacing(3),
-      paddingBottom: theme.spacing(3),
-      '&>*': {
-        marginTop: theme.spacing(3),
-        marginBottom: theme.spacing(3),
-      },
+      marginTop: theme.spacing(6),
     },
-    fader: {
-      width: '100%',
-      textAlign: 'center',
-    },
-    title: {
-      paddingBottom: 32,
-    },
-    projectsContainer: {
+    projects: {
       display: 'flex',
-      flexDirection: 'row',
+      flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
       '&>*': {
-        margin: theme.spacing(2),
+        marginBottom: theme.spacing(5),
       },
     },
   })
@@ -67,13 +51,15 @@ const projects: ProjectItemProps[] = [
 export default function Projects() {
   const classes = useStyles();
   return (
-    <div className={classes.background}>
-      <Container className={classes.container} maxWidth='lg'>
-        <Typography variant='h4'>Recent Projects</Typography>
+    <Container className={classes.container} maxWidth='lg'>
+      <Typography paragraph variant='h4'>
+        Recent Projects
+      </Typography>
+      <div className={classes.projects}>
         {projects.map(project => (
           <ProjectItem {...project} github='#' demo='#' key={project.name} />
         ))}
-      </Container>
-    </div>
+      </div>
+    </Container>
   );
 }

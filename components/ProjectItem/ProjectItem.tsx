@@ -1,13 +1,5 @@
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardMedia from '@material-ui/core/CardMedia';
-import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import PublicIcon from '@material-ui/icons/Public';
 import BackdroppedContent from 'components/BackdroppedContent';
 import React from 'react';
 import ProjectDetails from './ProjectDetails';
@@ -47,18 +39,21 @@ const useStyles = makeStyles(theme =>
     details: {
       width,
       hyphens: 'none',
-      padding: theme.spacing(2)
+      padding: theme.spacing(2),
     },
     projectsContainer: {
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
-      flexWrap:'wrap',
+      flexWrap: 'wrap',
       '&>*': {
         margin: theme.spacing(1),
       },
     },
+    projectDetails:{
+      padding:theme.spacing(1)
+    }
   })
 );
 
@@ -77,8 +72,7 @@ export default function ProjectItem(props: ProjectItemProps) {
 
   return (
     <div className={classes.projectsContainer}>
-      <BackdroppedContent top left spacing={2}>
-        <Paper className={''}>
+      <Paper className={''}>
         <img
           style={{
             height: 180,
@@ -86,13 +80,10 @@ export default function ProjectItem(props: ProjectItemProps) {
           }}
           src={imageUrl}
         />
-        </Paper>
-      </BackdroppedContent>
-      <BackdroppedContent bottom right spacing={2}>
-        <Paper className={classes.details}>
-          <ProjectDetails {...props} />
-        </Paper>
-      </BackdroppedContent>
+      </Paper>
+      <div
+      className={classes.projectDetails}
+      ><ProjectDetails {...props} /></div>
     </div>
   );
 }

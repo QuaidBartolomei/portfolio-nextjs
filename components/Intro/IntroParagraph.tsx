@@ -22,8 +22,8 @@ const useStyles = makeStyles(theme =>
       flexDirection: 'row',
       alignItems: 'center',
       '&>*': {
-      marginLeft: theme.spacing(2),
-      marginRight: theme.spacing(2),
+        marginLeft: theme.spacing(2),
+        marginRight: theme.spacing(2),
       },
       justifyContent: 'center',
     },
@@ -35,7 +35,7 @@ export default function IntroParagraph() {
   return (
     <div className={classes.IntroParagraphContainer}>
       <Typography className={classes.text} variant='subtitle1'>
-      Full Stack Web Developer
+        Full Stack Web Developer
       </Typography>
       <div className={classes.buttonsContainer}>
         <Button variant='contained' color='secondary'>
