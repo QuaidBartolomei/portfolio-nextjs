@@ -53,7 +53,8 @@ export default function IntroSection() {
       <div className={classes.backgroundOverlay} />
       <div className={classes.contentContainer}>
         <Container className={classes.introSectionContent}>
-          <Typography variant='h4'>Quaid Bartolomei</Typography>
+          <Typography 
+          variant='h4'>Quaid Bartolomei</Typography>
           <IntroParagraph />
         </Container>
       </div>

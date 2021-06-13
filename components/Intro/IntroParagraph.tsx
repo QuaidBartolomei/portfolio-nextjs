@@ -34,7 +34,7 @@ export default function IntroParagraph() {
   const classes = useStyles();
   return (
     <div className={classes.IntroParagraphContainer}>
-      <Typography className={classes.text} variant='subtitle1'>
+      <Typography paragraph className={classes.text} variant='subtitle1'>
         Full Stack Web Developer
       </Typography>
       <div className={classes.buttonsContainer}>

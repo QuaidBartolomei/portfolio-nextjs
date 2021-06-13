@@ -1,22 +1,20 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import Paper from '@material-ui/core/Paper';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import React from 'react';
 import {
-  SiTypescript,
-  SiReact,
   SiMongodb,
   SiNodeDotJs,
   SiNpm,
+  SiReact,
+  SiTypescript,
 } from 'react-icons/si';
-import Container from '@material-ui/core/Container';
 
 const size = 32;
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    container: {
-      textAlign: 'center',
-    },
+    container: {},
     image: {
       height: size,
       width: size,
@@ -27,16 +25,17 @@ const useStyles = makeStyles(theme =>
     },
     techList: {
       display: 'flex',
+      textAlign: 'center',
       flexWrap: 'wrap',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      border: 'medium black solid',
+      borderRadius: 16,
       '&>*': {
         margin: theme.spacing(1),
       },
     },
-    imageBackground: {
+    techItem: {
       padding: theme.spacing(1),
       borderRadius: 15,
       display: 'flex',
@@ -69,19 +68,17 @@ export default function TechShowcase() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.container}>
-      <div className={classes.techList}>
-        {tech.map(({ Component, name }) => (
-          <div key={name} className={classes.imageBackground}>
-            <div className={classes.iconContainer}>
-              <Typography variant='h6' className={classes.icon}>
-                <Component />
-              </Typography>
-            </div>
-            <Typography variant='h6'>{name}</Typography>
+    <Paper className={classes.techList}>
+      {tech.map(({ Component, name }) => (
+        <div key={name} className={classes.techItem}>
+          <div className={classes.iconContainer}>
+            <Typography variant='h6' className={classes.icon}>
+              <Component />
+            </Typography>
           </div>
-        ))}
-      </div>
-    </Container>
+          <Typography variant='h6'>{name}</Typography>
+        </div>
+      ))}
+    </Paper>
   );
 }

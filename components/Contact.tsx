@@ -11,6 +11,7 @@ const useStyles = makeStyles(theme =>
     background: {
       position: 'relative',
       backgroundColor: theme.palette.background.default,
+        marginTop: theme.spacing(4),
     },
     container: {
       width: '100%',
