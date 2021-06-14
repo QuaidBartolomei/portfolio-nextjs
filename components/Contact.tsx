@@ -5,13 +5,14 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import SendIcon from '@material-ui/icons/Send';
 import React from 'react';
+import ContactForm from './ContactForm';
 
 const useStyles = makeStyles(theme =>
   createStyles({
     background: {
       position: 'relative',
       backgroundColor: theme.palette.background.default,
-        marginTop: theme.spacing(4),
+      marginTop: theme.spacing(4),
     },
     container: {
       width: '100%',
@@ -19,7 +20,7 @@ const useStyles = makeStyles(theme =>
       flexDirection: 'column',
       justifyContent: 'flex-start',
       alignItems: 'center',
-      minHeight:'100vh',
+      minHeight: '100vh',
       paddingBottom: theme.spacing(2),
     },
     form: {
@@ -32,8 +33,7 @@ const useStyles = makeStyles(theme =>
         marginBottom: theme.spacing(1),
       },
     },
-    title:{
-    }
+    title: {},
   })
 );
 
@@ -42,24 +42,10 @@ export default function Contact() {
   return (
     <div className={classes.background}>
       <Container className={classes.container} maxWidth='lg'>
-        <Typography
-        className={classes.title}
-      paragraph
-        variant='h4'>Contact Me</Typography>
-        <form className={classes.form}>
-          <TextField id='outlined-basic' label='Name' variant='outlined' />
-          <TextField id='outlined-basic' label='Email' variant='outlined' />
-          <TextField
-            id='outlined-multiline-static'
-            label='Message'
-            multiline
-            rows={9}
-            variant='outlined'
-          />
-          <Button variant='contained' color='primary' endIcon={<SendIcon />}>
-            Send
-          </Button>
-        </form>
+        <Typography className={classes.title} paragraph variant='h4'>
+          Contact Me
+        </Typography>
+        <ContactForm />
       </Container>
     </div>
   );

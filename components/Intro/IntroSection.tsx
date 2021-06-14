@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import IntroParagraph from './IntroParagraph';
 
-const height = 400;
+const height = 320;
 
 const useStyles = makeStyles(theme =>
   createStyles({

@@ -1,3 +1,4 @@
+import Grid from '@material-ui/core/Grid';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
@@ -14,7 +15,6 @@ const size = 32;
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    container: {},
     image: {
       height: size,
       width: size,
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme =>
       backgroundRepeat: 'no-repeat',
       backgroundColor: 'transparent',
     },
-    techList: {
+    container: {
       display: 'flex',
       textAlign: 'center',
       flexWrap: 'wrap',
@@ -31,12 +31,13 @@ const useStyles = makeStyles(theme =>
       alignItems: 'center',
       justifyContent: 'flex-start',
       borderRadius: 16,
+      padding: theme.spacing(1),
       '&>*': {
-        margin: theme.spacing(1),
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
       },
     },
     techItem: {
-      padding: theme.spacing(1),
       borderRadius: 15,
       display: 'flex',
       flexDirection: 'row',
@@ -51,7 +52,7 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'center',
     },
     iconContainer: {
-      marginRight: theme.spacing(1),
+      marginRight: theme.spacing(0.5),
     },
   })
 );
@@ -62,23 +63,30 @@ const tech = [
   { Component: SiMongodb, name: 'Mongo DB' },
   { Component: SiNpm, name: 'NPM' },
   { Component: SiNodeDotJs, name: 'Node JS' },
+  { Component: React.Fragment, name: '...And More' },
 ];
 
 export default function TechShowcase() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.techList}>
-      {tech.map(({ Component, name }) => (
-        <div key={name} className={classes.techItem}>
-          <div className={classes.iconContainer}>
-            <Typography variant='h6' className={classes.icon}>
-              <Component />
-            </Typography>
-          </div>
-          <Typography variant='h6'>{name}</Typography>
-        </div>
-      ))}
+    <Paper className={classes.container}>
+      <Grid container
+      spacing={1}
+      >
+        {tech.map(({ Component, name }) => (
+          <Grid key={name} item xs={6}>
+            <div className={classes.techItem}>
+              <div className={classes.iconContainer}>
+                <Typography variant='h6' className={classes.icon}>
+                  <Component />
+                </Typography>
+              </div>
+              <Typography variant='h6'>{name}</Typography>
+            </div>
+          </Grid>
+        ))}
+      </Grid>
     </Paper>
   );
 }

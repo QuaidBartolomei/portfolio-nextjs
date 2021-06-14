@@ -45,24 +45,17 @@ const useStyles = makeStyles(theme =>
 export default function index() {
   const classes = useStyles();
 
-  const Hero = () => (
-    <Typography variant='h1'>
-      <AnimatedLogo />
-    </Typography>
-  );
-  const About = () => <TechShowcase />;
-
   return (
     <>
       <IntroSection />
-    <div className={classes.background}>
-      <AboutSection />
-      <Projects />
-      <Element name='contact'>
-        <Contact />
-      </Element>
-      <Footer />
-    </div>
+      <div className={classes.background}>
+        <AboutSection />
+        <Projects />
+        <Element name='contact'>
+          <Contact />
+        </Element>
+        <Footer />
+      </div>
     </>
   );
 }
