@@ -9,6 +9,12 @@ import {
   SiNpm,
   SiReact,
   SiTypescript,
+  SiGithub,
+  SiSocketDotIo,
+  SiMaterialUi,
+  SiHtml5,
+  SiJavascript,
+  SiCss3,
 } from 'react-icons/si';
 
 const size = 32;
@@ -38,12 +44,10 @@ const useStyles = makeStyles(theme =>
       },
     },
     techItem: {
-      borderRadius: 15,
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'flex-start',
-      width: 150,
     },
     icon: {
       display: 'flex',
@@ -63,6 +67,8 @@ const tech = [
   { Component: SiMongodb, name: 'Mongo DB' },
   { Component: SiNpm, name: 'NPM' },
   { Component: SiNodeDotJs, name: 'Node JS' },
+  { Component: SiSocketDotIo, name: 'Socket.io' },
+  { Component: SiMaterialUi, name: 'Material-UI' },
   { Component: React.Fragment, name: '...And More' },
 ];
 

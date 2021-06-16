@@ -1,10 +1,11 @@
 import blueGrey from '@material-ui/core/colors/blueGrey';
+import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AboutSection from 'components/AboutSection/AboutSection';
-import Contact from 'components/Contact';
+import Contact from 'components/ContactSection/Contact';
 import Footer from 'components/Footer';
 import IntroSection from 'components/Intro/IntroSection';
-import Projects from 'pages/projects';
+import ProjectSection from 'components/ProjectSection/ProjectSection';
 import React from 'react';
 
 const backgroundColors = {
@@ -44,12 +45,12 @@ export default function index() {
   return (
     <>
       <IntroSection />
-      <div className={classes.background}>
+      <Paper square elevation={24} className={classes.background}>
         <AboutSection />
-        <Projects />
+        <ProjectSection />
         <Contact />
+      </Paper>
         <Footer />
-      </div>
     </>
   );
 }

@@ -1,9 +1,9 @@
 import { Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import ProjectItem, {
-  ProjectItemProps,
-} from 'components/ProjectItem/ProjectItem';
+import React from 'react';
+import ProjectItem, { ProjectItemProps } from './ProjectItem/ProjectItem';
+
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -48,7 +48,7 @@ const projects: ProjectItemProps[] = [
   },
 ];
 
-export default function Projects() {
+export default function ProjectSection() {
   const classes = useStyles();
   return (
     <Container className={classes.container} maxWidth='lg'>

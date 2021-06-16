@@ -11,14 +11,6 @@ const spacing = 1;
 const useStyles = makeStyles(theme =>
   createStyles({
     grid: {},
-    projectScreenshotContainer: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      height: '100%',
-      width: '100%',
-    },
     title: {},
     links: {
       padding: 0,

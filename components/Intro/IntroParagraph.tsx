@@ -2,7 +2,7 @@ import React from 'react';
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography/Typography';
 import Button from '@material-ui/core/Button';
-import ContactLinkButton from 'components/ContactLinkButton';
+import ContactLinkButton from './ContactLinkButton';
 
 const useStyles = makeStyles(theme =>
   createStyles({
