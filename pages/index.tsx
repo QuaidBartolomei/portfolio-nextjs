@@ -1,15 +1,11 @@
-import { Typography } from '@material-ui/core';
 import blueGrey from '@material-ui/core/colors/blueGrey';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AboutSection from 'components/AboutSection/AboutSection';
-import AnimatedLogo from 'components/AnimatedLogo';
 import Contact from 'components/Contact';
 import Footer from 'components/Footer';
 import IntroSection from 'components/Intro/IntroSection';
-import TechShowcase from 'components/AboutSection/TechShowcase';
 import Projects from 'pages/projects';
 import React from 'react';
-import { Element } from 'react-scroll';
 
 const backgroundColors = {
   hero: blueGrey[200],
@@ -51,9 +47,7 @@ export default function index() {
       <div className={classes.background}>
         <AboutSection />
         <Projects />
-        <Element name='contact'>
-          <Contact />
-        </Element>
+        <Contact />
         <Footer />
       </div>
     </>

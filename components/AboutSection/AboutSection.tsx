@@ -32,11 +32,16 @@ export default function AboutSection() {
           flexDirection: 'column',
           alignItems: 'center',
           justifyContent: 'center',
-          maxWidth:400,
+          maxWidth: 400,
         }}
       >
         <Container maxWidth='xs'>
-          <Typography variant='h4' className={classes.title} paragraph>
+          <Typography
+            variant='h4'
+            align='center'
+            className={classes.title}
+            paragraph
+          >
             About Me
           </Typography>
           <Typography paragraph align='center'>

@@ -5,14 +5,14 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import SendIcon from '@material-ui/icons/Send';
 import React from 'react';
-import ContactForm from './ContactForm';
+import ContactForm from './ContactForm/ContactForm';
+import { Element } from 'react-scroll';
 
 const useStyles = makeStyles(theme =>
   createStyles({
     background: {
       position: 'relative',
       backgroundColor: theme.palette.background.default,
-      marginTop: theme.spacing(4),
     },
     container: {
       width: '100%',
@@ -33,20 +33,22 @@ const useStyles = makeStyles(theme =>
         marginBottom: theme.spacing(1),
       },
     },
-    title: {},
+    title: {
+      marginTop: theme.spacing(4),
+    },
   })
 );
 
 export default function Contact() {
   const classes = useStyles();
   return (
-    <div className={classes.background}>
+    <Element name='contact' className={classes.background}>
       <Container className={classes.container} maxWidth='lg'>
         <Typography className={classes.title} paragraph variant='h4'>
           Contact Me
         </Typography>
         <ContactForm />
       </Container>
-    </div>
+    </Element>
   );
 }
