@@ -57,5 +57,5 @@ export default function SubmitButton() {
   if (form.submitCount > 0) return <DoneButton />;
   if (form.isSubmitting) return <LoadingButton />;
 
-  return <DoneButton />;
+  return <ReadyButton />;
 }

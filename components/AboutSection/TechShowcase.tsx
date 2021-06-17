@@ -15,7 +15,11 @@ import {
   SiHtml5,
   SiJavascript,
   SiCss3,
+  SiHeroku,
+  SiYarn,
+  SiNextDotJs,
 } from 'react-icons/si';
+import {IoLogoVercel} from 'react-icons/io5'
 
 const size = 32;
 
@@ -38,6 +42,7 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'flex-start',
       borderRadius: 16,
       padding: theme.spacing(1),
+      width:'100%',
       '&>*': {
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1),
@@ -47,11 +52,11 @@ const useStyles = makeStyles(theme =>
       display: 'flex',
       flexDirection: 'row',
       alignItems: 'center',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
     },
     icon: {
       display: 'flex',
-      flexDirection: 'column',
+      flexDirection: 'row',
       alignItems: 'center',
       justifyContent: 'center',
     },
@@ -64,12 +69,16 @@ const useStyles = makeStyles(theme =>
 const tech = [
   { Component: SiReact, name: 'React' },
   { Component: SiTypescript, name: 'Typescript' },
-  { Component: SiMongodb, name: 'Mongo DB' },
+  { Component: SiMongodb, name: 'MongoDB' },
   { Component: SiNpm, name: 'NPM' },
-  { Component: SiNodeDotJs, name: 'Node JS' },
+  { Component: SiNodeDotJs, name: 'Node.js' },
   { Component: SiSocketDotIo, name: 'Socket.io' },
   { Component: SiMaterialUi, name: 'Material-UI' },
-  { Component: React.Fragment, name: '...And More' },
+  { Component: SiNextDotJs, name: 'Next.js' },
+  { Component: SiYarn, name: 'Yarn' },
+  { Component: SiGithub, name: 'Github' },
+  { Component: SiHeroku, name: 'Heroku' },
+  { Component: IoLogoVercel, name: 'Vercel' },
 ];
 
 export default function TechShowcase() {
@@ -77,9 +86,7 @@ export default function TechShowcase() {
 
   return (
     <Paper className={classes.container}>
-      <Grid container
-      spacing={1}
-      >
+      <Grid container spacing={1}>
         {tech.map(({ Component, name }) => (
           <Grid key={name} item xs={6}>
             <div className={classes.techItem}>
@@ -92,6 +99,7 @@ export default function TechShowcase() {
             </div>
           </Grid>
         ))}
+        
       </Grid>
     </Paper>
   );

@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme =>
       width: '100%',
       minHeight: '100%',
       flexWrap: 'wrap',
-      marginTop: theme.spacing(6),
+      marginTop: theme.spacing(12),
     },
     projects: {
       display: 'flex',
