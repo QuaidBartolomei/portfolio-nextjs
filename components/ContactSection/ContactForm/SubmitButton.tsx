@@ -5,6 +5,7 @@ import SendIcon from '@material-ui/icons/Send';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { useFormikContext } from 'formik';
 import DoneIcon from '@material-ui/icons/Done';
+
 const useStyles = makeStyles(theme =>
   createStyles({
     SubmitButtonContainer: {
@@ -16,7 +17,13 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-export default function SubmitButton() {
+export type SubmitStatus = 'ready' | 'submitting' | 'done';
+
+export default function SubmitButton({
+  status = 'ready',
+}: {
+  status?: SubmitStatus;
+}) {
   const classes = useStyles();
 
   const form = useFormikContext();
@@ -54,8 +61,8 @@ export default function SubmitButton() {
     </Button>
   );
 
-  if (form.submitCount > 0) return <DoneButton />;
-  if (form.isSubmitting) return <LoadingButton />;
+  if (status === 'done') return <DoneButton />;
+  if (status === 'submitting') return <LoadingButton />;
 
   return <ReadyButton />;
 }

@@ -1,44 +1,16 @@
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-import SendIcon from '@material-ui/icons/Send';
-import { Form, Formik, useFormik, useFormikContext } from 'formik';
+import { Form, Formik, useFormikContext } from 'formik';
 import React from 'react';
+import { postData } from 'utils/fetch.util';
 import * as yup from 'yup';
-import SubmitButton from './SubmitButton';
+import SubmitButton, { SubmitStatus } from './SubmitButton';
 
 interface FormData {
   name: string;
   email: string;
   message: string;
 }
-
-function postData<T>(data: T) {
-  return fetch('/api/contact', {
-    method: 'POST',
-    headers: {
-      Accept: 'application/json, text/plain, */*',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(data),
-  });
-}
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    form: {
-      width: '100%',
-      maxWidth: 600,
-      display: 'flex',
-      flexDirection: 'column',
-      '&>*': {
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-      },
-    },
-  })
-);
 
 const validationSchema = yup.object({
   email: yup
@@ -55,26 +27,41 @@ const validationSchema = yup.object({
     .required('message is required'),
 });
 
+const useStyles = makeStyles(theme =>
+  createStyles({
+    form: {
+      width: '100%',
+      maxWidth: 600,
+      display: 'flex',
+      flexDirection: 'column',
+      '&>*': {
+        marginTop: theme.spacing(1),
+        marginBottom: theme.spacing(1),
+      },
+    },
+  })
+);
+
 export default function ContactForm() {
   const classes = useStyles();
 
-  const [submitState, setSubmitState] =
-    React.useState<'ready' | 'sending' | 'done'>('ready');
+  const [submitState, setSubmitState] = React.useState<SubmitStatus>('ready');
 
   return (
     <Formik
       initialValues={{ email: '', name: '', message: '' }}
       validationSchema={validationSchema}
       onSubmit={async values => {
+        setSubmitState('submitting');
         const res = await postData(values);
-        if (res.status === 200) console.log('Response succeeded!');
+        if (res.status === 200) setSubmitState('done');
       }}
     >
       <Form className={classes.form}>
         <NameField />
         <EmailField />
         <MessageField />
-        <SubmitButton />
+        <SubmitButton status={submitState} />
       </Form>
     </Formik>
   );
