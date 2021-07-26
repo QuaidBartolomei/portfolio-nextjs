@@ -3,23 +3,19 @@ import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
+import { IconType } from 'react-icons';
+import { IoLogoVercel } from 'react-icons/io5';
 import {
-  SiMongodb,
-  SiNodeDotJs,
-  SiNpm,
-  SiReact,
-  SiTypescript,
-  SiGithub,
-  SiSocketDotIo,
-  SiMaterialUi,
-  SiHtml5,
-  SiJavascript,
-  SiCss3,
+  SiFirebase,
   SiHeroku,
-  SiYarn,
+  SiMaterialUi,
+  SiMongodb,
   SiNextDotJs,
+  SiReact,
+  SiSocketDotIo,
+  SiStorybook,
+  SiTypescript,
 } from 'react-icons/si';
-import {IoLogoVercel} from 'react-icons/io5'
 
 const size = 32;
 
@@ -42,7 +38,7 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'flex-start',
       borderRadius: 16,
       padding: theme.spacing(1),
-      width:'100%',
+      width: '100%',
       '&>*': {
         marginTop: theme.spacing(1),
         marginBottom: theme.spacing(1),
@@ -66,20 +62,35 @@ const useStyles = makeStyles(theme =>
   })
 );
 
+type ToolboxItemData = { Icon: IconType; name: string };
+
 const tech = [
-  { Component: SiReact, name: 'React' },
-  { Component: SiTypescript, name: 'Typescript' },
-  { Component: SiMongodb, name: 'MongoDB' },
-  { Component: SiNpm, name: 'NPM' },
-  { Component: SiNodeDotJs, name: 'Node.js' },
-  { Component: SiSocketDotIo, name: 'Socket.io' },
-  { Component: SiMaterialUi, name: 'Material-UI' },
-  { Component: SiNextDotJs, name: 'Next.js' },
-  { Component: SiYarn, name: 'Yarn' },
-  { Component: SiGithub, name: 'Github' },
-  { Component: SiHeroku, name: 'Heroku' },
-  { Component: IoLogoVercel, name: 'Vercel' },
+  { Icon: SiReact, name: 'React' },
+  { Icon: SiTypescript, name: 'Typescript' },
+  { Icon: SiMongodb, name: 'MongoDB' },
+  { Icon: SiSocketDotIo, name: 'Socket.io' },
+  { Icon: SiMaterialUi, name: 'Material-UI' },
+  { Icon: SiNextDotJs, name: 'Next.js' },
+  { Icon: SiHeroku, name: 'Heroku' },
+  { Icon: IoLogoVercel, name: 'Vercel' },
+  { Icon: SiFirebase, name: 'Firebase' },
+  { Icon: SiStorybook, name: 'Storybook' },
 ];
+
+function ToolboxItem({ tool }: { tool: ToolboxItemData }) {
+  const classes = useStyles();
+  const { name, Icon } = tool;
+  return (
+    <div className={classes.techItem}>
+      <div className={classes.iconContainer}>
+        <Typography variant='h6' className={classes.icon}>
+          <Icon />
+        </Typography>
+      </div>
+      <Typography variant='h6'>{name}</Typography>
+    </div>
+  );
+}
 
 export default function TechShowcase() {
   const classes = useStyles();
@@ -87,19 +98,11 @@ export default function TechShowcase() {
   return (
     <Paper className={classes.container}>
       <Grid container spacing={1}>
-        {tech.map(({ Component, name }) => (
-          <Grid key={name} item xs={6}>
-            <div className={classes.techItem}>
-              <div className={classes.iconContainer}>
-                <Typography variant='h6' className={classes.icon}>
-                  <Component />
-                </Typography>
-              </div>
-              <Typography variant='h6'>{name}</Typography>
-            </div>
+        {tech.map(tool => (
+          <Grid item xs={6} key={tool.name}>
+            <ToolboxItem tool={tool} />
           </Grid>
         ))}
-        
       </Grid>
     </Paper>
   );

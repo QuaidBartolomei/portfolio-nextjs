@@ -3,7 +3,7 @@ import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import ProjectItem, { ProjectItemProps } from './ProjectItem/ProjectItem';
-
+import { Element } from 'react-scroll';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -52,6 +52,7 @@ export default function ProjectSection() {
   const classes = useStyles();
   return (
     <Container className={classes.container} maxWidth='lg'>
+      <Element name='projects' />
       <Typography paragraph variant='h4'>
         Recent Projects
       </Typography>

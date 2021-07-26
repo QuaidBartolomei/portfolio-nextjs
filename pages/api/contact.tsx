@@ -2,10 +2,6 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { createTransport } from 'nodemailer';
 import { StatusCodes } from 'http-status-codes';
 
-type Data = {
-  success: Boolean;
-};
-
 export default (req: NextApiRequest, res: NextApiResponse) => {
   const transporter = createTransport({
     port: 465,
