@@ -1,16 +1,17 @@
 import { useScrollTrigger } from '@material-ui/core';
-import AppBar from '@material-ui/core/AppBar';
+import MailIcon from '@material-ui/icons/Mail';
+import AppBar, { AppBarProps } from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import DraftsIcon from '@material-ui/icons/Drafts';
-import MailIcon from '@material-ui/icons/Mail';
 import { useSpring } from '@react-spring/core';
 import React, { useState } from 'react';
 import { animateScroll, Link } from 'react-scroll';
 import { animated } from 'react-spring';
+import ContactButtons from './ContactButtons';
 
 const brandLinkCircleSize = 58;
 
@@ -26,7 +27,7 @@ const useStyles = makeStyles((theme: Theme) =>
       alignItems: 'center',
       justifyContent: 'center',
       padding: 0,
-      color:theme.palette.primary.light
+      color: theme.palette.primary.light,
     },
     title: {
       flexGrow: 1,
@@ -36,7 +37,6 @@ const useStyles = makeStyles((theme: Theme) =>
       height: '100%',
       width: '100%',
       position: 'absolute',
-      backgroundColor: theme.palette.primary.main,
     },
     brandLinkButtonContainer: {
       height: brandLinkCircleSize,
@@ -56,7 +56,9 @@ export enum PageAnchors {
   projects = 'projects',
 }
 
-export default function Navbar() {
+export type NavbarProps = {} & AppBarProps;
+
+export function Navbar(props: NavbarProps) {
   const classes = useStyles();
 
   const BrandLink = () => (
@@ -105,15 +107,16 @@ export default function Navbar() {
     opacity: scrollTrigger ? 1 : 0,
   });
 
+
   return (
-    <AppBar position='fixed' elevation={0} color='transparent'>
+    <AppBar position='fixed' elevation={0} {...props}>
       <animated.div className={classes.background} style={spring} />
       <Container maxWidth='lg' disableGutters>
         <Toolbar>
           <div className={classes.title}>
             <BrandLink />
           </div>
-          <ContactLinkButton />
+          <ContactButtons />
         </Toolbar>
       </Container>
     </AppBar>

@@ -4,9 +4,9 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { scroller } from 'react-scroll';
-import ContactLinkButton from './ContactLinkButton';
+import ContactLinkButton from '../ContactLinkButton';
 
-const height = 320;
+const height = '100vh';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -17,6 +17,8 @@ const useStyles = makeStyles(theme =>
     background: {
       position: 'fixed',
       backgroundImage: 'url(hexagon.svg)',
+      backgroundRepeat: 'no-repeat',
+      backgroundSize: 'cover',
       height,
       width: '100vw',
       zIndex: -2,
