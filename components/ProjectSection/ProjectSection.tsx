@@ -15,16 +15,19 @@ const useStyles = makeStyles(theme =>
       width: '100%',
       minHeight: '100%',
       flexWrap: 'wrap',
-      marginTop: theme.spacing(12),
+      marginTop: theme.spacing(8),
     },
     projects: {
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
       justifyContent: 'center',
-      '&>*': {
+      '&>*:not(:last-child)': {
         marginBottom: theme.spacing(5),
       },
+    },
+    title: {
+      marginBottom: theme.spacing(4),
     },
   })
 );
@@ -51,16 +54,18 @@ const projects: ProjectItemProps[] = [
 export default function ProjectSection() {
   const classes = useStyles();
   return (
-    <Container className={classes.container} maxWidth='lg'>
+    <>
       <Element name='projects' />
-      <Typography paragraph variant='h4'>
-        Recent Projects
-      </Typography>
-      <div className={classes.projects}>
-        {projects.map(project => (
-          <ProjectItem {...project} github='#' demo='#' key={project.name} />
-        ))}
-      </div>
-    </Container>
+      <Container className={classes.container} maxWidth='lg'>
+        <Typography paragraph variant='h4' className={classes.title}>
+          Recent Projects
+        </Typography>
+        <div className={classes.projects}>
+          {projects.map(project => (
+            <ProjectItem {...project} github='#' demo='#' key={project.name} />
+          ))}
+        </div>
+      </Container>
+    </>
   );
 }

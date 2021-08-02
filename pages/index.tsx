@@ -2,9 +2,10 @@ import blueGrey from '@material-ui/core/colors/blueGrey';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AboutSection from 'components/AboutSection/AboutSection';
-import Contact from 'components/ContactSection/Contact';
+import ContactSection from 'components/ContactSection/ContactSection';
 import Footer from 'components/Footer';
 import IntroSection from 'components/Intro/IntroSection';
+import { Navbar } from 'components/Navbar/Navbar';
 import ProjectSection from 'components/ProjectSection/ProjectSection';
 import React from 'react';
 
@@ -46,11 +47,12 @@ export default function index() {
     <>
       <IntroSection />
       <Paper square elevation={24} className={classes.background}>
+        <Navbar />
         <AboutSection />
         <ProjectSection />
-        <Contact />
+        <ContactSection />
       </Paper>
-        <Footer />
+      <Footer />
     </>
   );
 }

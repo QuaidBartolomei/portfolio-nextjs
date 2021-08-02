@@ -7,10 +7,6 @@ import ContactForm from './ContactForm/ContactForm';
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    background: {
-      position: 'relative',
-      backgroundColor: theme.palette.background.default,
-    },
     container: {
       width: '100%',
       display: 'flex',
@@ -18,24 +14,34 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'center',
       alignItems: 'center',
       minHeight: '100vh',
-      paddingBottom: theme.spacing(2),
+      paddingBottom: theme.spacing(6),
     },
     title: {
-      marginTop: theme.spacing(4),
+      marginTop: theme.spacing(10),
+      marginBottom: theme.spacing(2),
     },
   })
 );
 
-export default function Contact() {
+export default function ContactSection() {
   const classes = useStyles();
   return (
-    <Element name='contact' className={classes.background}>
-      <Container className={classes.container} maxWidth='lg'>
-        <Typography className={classes.title} paragraph variant='h4'>
+    <Container className={classes.container} maxWidth='xs'>
+      <Element name='contact'>
+        <Typography
+          align='center'
+          className={classes.title}
+          paragraph
+          variant='h4'
+        >
           Contact Me
         </Typography>
+        <Typography paragraph align='center' variant='subtitle2'>
+          Send me a message with your name and email address and I will email
+          you a response.
+        </Typography>
         <ContactForm />
-      </Container>
-    </Element>
+      </Element>
+    </Container>
   );
 }

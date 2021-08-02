@@ -1,67 +1,42 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
+import DraftsIcon from '@material-ui/icons/Drafts';
 import GitHubIcon from '@material-ui/icons/GitHub';
-import MailIcon from '@material-ui/icons/Mail';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import Link from '@material-ui/core/Link';
-import { scroller } from 'react-scroll';
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    ContactButtonsContainer: {
-      // styles here
-    },
-  })
-);
+import MailIcon from '@material-ui/icons/Mail';
+import { IconLinkButton } from 'components/IconLinkButton';
+import React from 'react';
+import { Link } from 'react-scroll';
 
 export default function ContactButtons() {
-  const classes = useStyles();
-  type ButtonData = {
-    icon: JSX.Element;
-    onClick?: () => void;
-    href: string;
-  };
-
-  const buttonData: ButtonData[] = [
-    {
-      icon: <GitHubIcon />,
-      href: '',
-    },
-    {
-      icon: <LinkedInIcon />,
-      href: '',
-    },
-  ];
+  const [selected, setSelected] = React.useState(false);
 
   function MailButton() {
     return (
-      <IconButton
-        onClick={() => {
-          scroller.scrollTo('contact', {
-            smooth: true,
-          });
-        }}
+      <Link
+        to='contact'
+        spy={true}
+        onSetActive={() => setSelected(true)}
+        onSetInactive={() => setSelected(false)}
+        smooth={true}
       >
-        <MailIcon />
-      </IconButton>
+        <IconButton>{selected ? <DraftsIcon /> : <MailIcon />}</IconButton>
+      </Link>
     );
   }
 
-  function ContactButton({ icon, href, ...props }: ButtonData) {
-    return (
-      <Link href={href}>
-        <IconButton {...props}>{icon}</IconButton>
-      </Link>
-    );
+  function GitHubButton() {
+    return <IconLinkButton href={'#'} icon={<GitHubIcon />} />;
+  }
+
+  function LinkedInButton() {
+    return <IconLinkButton href={'#'} icon={<LinkedInIcon />} />;
   }
 
   return (
     <>
       <MailButton />
-      {buttonData.map(data => (
-        <ContactButton {...data} />
-      ))}
+      <GitHubButton />
+      <LinkedInButton />
     </>
   );
 }
