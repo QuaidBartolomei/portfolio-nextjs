@@ -19,17 +19,19 @@ export default function ContactButtons() {
         onSetInactive={() => setSelected(false)}
         smooth={true}
       >
-        <IconButton>{selected ? <DraftsIcon /> : <MailIcon />}</IconButton>
+        <IconButton color='inherit'>
+          {selected ? <DraftsIcon /> : <MailIcon />}
+        </IconButton>
       </Link>
     );
   }
 
   function GitHubButton() {
-    return <IconLinkButton href={'#'} icon={<GitHubIcon />} />;
+    return <IconLinkButton color='inherit' href={'#'} icon={<GitHubIcon />} />;
   }
 
   function LinkedInButton() {
-    return <IconLinkButton href={'#'} icon={<LinkedInIcon />} />;
+    return <IconLinkButton color='inherit' href={'#'} icon={<LinkedInIcon />} />;
   }
 
   return (

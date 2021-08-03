@@ -19,9 +19,10 @@ const useStyles = makeStyles(theme =>
     },
     projects: {
       display: 'flex',
+      flexGrow: 1,
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center',
+      justifyContent: 'space-evenly',
       '&>*:not(:last-child)': {
         marginBottom: theme.spacing(5),
       },
