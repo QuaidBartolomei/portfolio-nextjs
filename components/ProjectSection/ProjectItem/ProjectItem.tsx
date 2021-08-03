@@ -1,7 +1,9 @@
+import Link from '@material-ui/core/Link';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import ProjectDetails from './ProjectDetails';
+import { FullscreenImage } from '@quaidbartolomei/material-ui.image.fullscreen-image';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -21,6 +23,10 @@ const useStyles = makeStyles(theme =>
         width: 320,
       },
     },
+    image: {
+      height: 180,
+      width: 320,
+    },
   })
 );
 
@@ -36,21 +42,27 @@ export interface ProjectItemProps {
 export default function ProjectItem(props: ProjectItemProps) {
   const classes = useStyles();
   const { imageUrl } = props;
+  const [showFullImage, setShowFullImage] = React.useState(false);
 
   return (
-    <div className={classes.projectsContainer}>
-      <Paper className={''}>
-        <img
-          style={{
-            height: 180,
-            width: 320,
-          }}
-          src={imageUrl}
-        />
-      </Paper>
-      <div className={classes.projectDetails}>
-        <ProjectDetails {...props} />
+    <>
+      <FullscreenImage
+        image={imageUrl}
+        onClick={() => setShowFullImage(false)}
+        open={showFullImage}
+      />
+      <div className={classes.projectsContainer}>
+        <Paper className={''}>
+          <img
+            onClick={() => setShowFullImage(true)}
+            className={classes.image}
+            src={imageUrl}
+          />
+        </Paper>
+        <div className={classes.projectDetails}>
+          <ProjectDetails {...props} />
+        </div>
       </div>
-    </div>
+    </>
   );
 }

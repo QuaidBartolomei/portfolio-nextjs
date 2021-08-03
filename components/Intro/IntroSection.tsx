@@ -69,7 +69,6 @@ export default function IntroSection() {
     const scrollToProjects = () =>
       scroller.scrollTo('projects', {
         smooth: true,
-        duration: 500,
       });
     return (
       <Button variant='contained' color='secondary' onClick={scrollToProjects}>

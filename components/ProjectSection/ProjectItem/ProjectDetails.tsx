@@ -5,13 +5,10 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PublicIcon from '@material-ui/icons/Public';
-
-const spacing = 1;
+import Link from '@material-ui/core/Link';
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    grid: {},
-    title: {},
     links: {
       padding: 0,
       marginTop: theme.spacing(2),
@@ -22,17 +19,17 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-interface Props {
+export type ProjectDetailsProps = {
   name: string;
   description: string;
   github: string;
   demo: string;
   imageUrl: string;
   technologiesUsed: string[];
-}
+};
 
 export default function ProjectDetails(
-  props: HTMLAttributes<HTMLDivElement> & Props
+  props: HTMLAttributes<HTMLDivElement> & ProjectDetailsProps
 ) {
   const {
     imageUrl,
@@ -67,8 +64,8 @@ export default function ProjectDetails(
     </Typography>
   );
 
-  const Links = () => (
-    <CardActions className={classes.links}>
+  const LiveDemoLink = () => (
+    <Link href={demo}>
       <Button
         size='small'
         variant='outlined'
@@ -77,6 +74,11 @@ export default function ProjectDetails(
       >
         Live Demo
       </Button>
+    </Link>
+  );
+
+  const GitHubLink = () => (
+    <Link href={demo}>
       <Button
         size='small'
         variant='outlined'
@@ -85,6 +87,13 @@ export default function ProjectDetails(
       >
         Source Code
       </Button>
+    </Link>
+  );
+
+  const Links = () => (
+    <CardActions className={classes.links}>
+      <LiveDemoLink />
+      <GitHubLink />
     </CardActions>
   );
 

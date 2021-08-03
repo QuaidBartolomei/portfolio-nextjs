@@ -39,11 +39,18 @@ export default function AboutSection() {
       <img src='Responsive-amico.svg' className={classes.image} />
       <div className={classes.container}>
         <AboutMe />
-        <div className={classes.title}>
-          <Typography variant='h4' align='center' paragraph>
-            My Toolbox
-          </Typography>
-        </div>
+        <Typography
+          variant='h4'
+          className={classes.title}
+          align='center'
+          paragraph
+        >
+          My Toolbox
+        </Typography>
+        <Typography paragraph align='center' variant='subtitle2'>
+          These are the frameworks and tools I am most familiar with and have
+          used to deploy websites.
+        </Typography>
         <TechShowcase />
       </div>
     </Container>

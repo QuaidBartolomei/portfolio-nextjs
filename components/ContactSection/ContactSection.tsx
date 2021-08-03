@@ -26,8 +26,8 @@ const useStyles = makeStyles(theme =>
 export default function ContactSection() {
   const classes = useStyles();
   return (
-    <Container className={classes.container} maxWidth='xs'>
-      <Element name='contact'>
+    <Element name='contact'>
+      <Container className={classes.container} maxWidth='xs'>
         <Typography
           align='center'
           className={classes.title}
@@ -41,7 +41,7 @@ export default function ContactSection() {
           you a response.
         </Typography>
         <ContactForm />
-      </Element>
-    </Container>
+      </Container>
+    </Element>
   );
 }

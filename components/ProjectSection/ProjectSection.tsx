@@ -13,9 +13,9 @@ const useStyles = makeStyles(theme =>
       alignItems: 'center',
       justifyContent: 'flex-start',
       width: '100%',
-      minHeight: '100%',
+      minHeight: '100vh',
       flexWrap: 'wrap',
-      marginTop: theme.spacing(8),
+      marginTop: theme.spacing(10),
     },
     projects: {
       display: 'flex',
@@ -53,6 +53,15 @@ const projects: ProjectItemProps[] = [
 
 export default function ProjectSection() {
   const classes = useStyles();
+
+  const Projects = () => (
+    <div className={classes.projects}>
+      {projects.map(project => (
+        <ProjectItem {...project} github='#' demo='#' key={project.name} />
+      ))}
+    </div>
+  );
+
   return (
     <>
       <Element name='projects' />
@@ -60,11 +69,7 @@ export default function ProjectSection() {
         <Typography paragraph variant='h4' className={classes.title}>
           Recent Projects
         </Typography>
-        <div className={classes.projects}>
-          {projects.map(project => (
-            <ProjectItem {...project} github='#' demo='#' key={project.name} />
-          ))}
-        </div>
+        <Projects />
       </Container>
     </>
   );
