@@ -4,6 +4,9 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { scroller } from 'react-scroll';
+import personalData from 'utils/personalData';
+import scrollTargets from 'utils/scrollTargets';
+import Background from './Background';
 import ContactLinkButton from './ContactLinkButton';
 
 const height = '100vh';
@@ -14,22 +17,6 @@ const useStyles = makeStyles(theme =>
       height,
       width: '100%',
     },
-    background: {
-      position: 'fixed',
-      backgroundImage: 'url(hexagon.svg)',
-      backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
-      height,
-      width: '100vw',
-      zIndex: -2,
-    },
-    backgroundOverlay: {
-      zIndex: -1,
-      backgroundColor: 'rgba(0,0,0,0.3)',
-      position: 'absolute',
-      width: '100%',
-      height: '100%',
-    },
     introSectionContent: {
       zIndex: 0,
       display: 'flex',
@@ -38,14 +25,12 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'center',
       height: '100%',
       color: theme.palette.primary.contrastText,
-      '&>*': {},
     },
     contentContainer: {
       height,
       width: '100vw',
       position: 'fixed',
     },
-
     text: {
       marginBottom: theme.spacing(2),
     },
@@ -64,14 +49,15 @@ const useStyles = makeStyles(theme =>
 
 export default function IntroSection() {
   const classes = useStyles();
+  const { name } = personalData;
 
   function ViewProjectsButton() {
     const scrollToProjects = () =>
-      scroller.scrollTo('projects', {
+      scroller.scrollTo(scrollTargets.projects, {
         smooth: true,
       });
     return (
-      <Button variant='contained' color='secondary' onClick={scrollToProjects}>
+      <Button variant='contained' color='primary' onClick={scrollToProjects}>
         View My Work
       </Button>
     );
@@ -79,11 +65,10 @@ export default function IntroSection() {
 
   return (
     <div className={classes.introSection}>
-      <div className={classes.background} />
-      <div className={classes.backgroundOverlay} />
+      <Background />
       <div className={classes.contentContainer}>
         <Container className={classes.introSectionContent}>
-          <Typography variant='h4'>Quaid Bartolomei</Typography>
+          <Typography variant='h4'>{name}</Typography>
           <Typography paragraph className={classes.text} variant='subtitle1'>
             Full Stack Web Developer
           </Typography>

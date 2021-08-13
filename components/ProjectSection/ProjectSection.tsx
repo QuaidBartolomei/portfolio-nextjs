@@ -5,6 +5,7 @@ import React from 'react';
 import ProjectItem from './ProjectItem/ProjectItem';
 import { Element } from 'react-scroll';
 import projectData from './projectData';
+import scrollTargets from 'utils/scrollTargets';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -12,24 +13,23 @@ const useStyles = makeStyles(theme =>
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'flex-start',
+      justifyContent: 'center',
       width: '100%',
       minHeight: '100vh',
       flexWrap: 'wrap',
-      marginTop: theme.spacing(10),
+      [theme.breakpoints.down('sm')]: { marginTop: theme.spacing(10) },
     },
     projects: {
       display: 'flex',
-      flexGrow: 1,
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'space-evenly',
       '&>*:not(:last-child)': {
-        marginBottom: theme.spacing(5),
+        marginBottom: theme.spacing(12),
+        [theme.breakpoints.down('sm')]: { marginBottom: theme.spacing(8) },
       },
     },
     title: {
-      marginBottom: theme.spacing(4),
+      marginBottom: theme.spacing(8),
     },
   })
 );
@@ -47,9 +47,9 @@ export default function ProjectSection() {
 
   return (
     <>
-      <Element name='projects' />
+      <Element name={scrollTargets.projects} />
       <Container className={classes.container} maxWidth='lg'>
-        <Typography paragraph variant='h4' className={classes.title}>
+        <Typography variant='h4' className={classes.title}>
           Recent Projects
         </Typography>
         <Projects />

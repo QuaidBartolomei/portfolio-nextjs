@@ -18,15 +18,15 @@ export default function ContactLinkButton() {
   return (
     <Link
       to='contact'
-      spy={true}
+      spy
       onSetActive={() => setSelected(true)}
       onSetInactive={() => setSelected(false)}
-      smooth={true}
+      smooth
     >
       <Button
         variant='contained'
         endIcon={selected ? <DraftsIcon /> : <MailIcon />}
-        color='primary'
+        color='secondary'
       >
         Contact
       </Button>

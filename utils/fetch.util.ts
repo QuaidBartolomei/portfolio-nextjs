@@ -7,6 +7,5 @@ export function postData<T>(data: T) {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(data),
-    
   });
 }

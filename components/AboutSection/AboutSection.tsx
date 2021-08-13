@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme =>
   createStyles({
     AboutSectionContainer: {
       display: 'flex',
+      minHeight: '100vh',
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'center',
