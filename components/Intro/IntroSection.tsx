@@ -4,7 +4,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { scroller } from 'react-scroll';
-import ContactLinkButton from '../ContactLinkButton';
+import ContactLinkButton from './ContactLinkButton';
 
 const height = '100vh';
 

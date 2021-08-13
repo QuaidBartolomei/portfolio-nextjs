@@ -27,7 +27,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).send({});
     } else {
       console.log(info);
-
       res.status(StatusCodes.OK).send({});
     }
   });
