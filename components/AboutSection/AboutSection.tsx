@@ -34,25 +34,35 @@ const useStyles = makeStyles(theme =>
 
 export default function AboutSection() {
   const classes = useStyles();
+
   return (
     <Container className={classes.AboutSectionContainer} maxWidth='lg'>
       <img src='Responsive-amico.svg' className={classes.image} />
       <div className={classes.container}>
         <AboutMe />
-        <Typography
-          variant='h4'
-          className={classes.title}
-          align='center'
-          paragraph
-        >
-          My Toolbox
-        </Typography>
-        <Typography paragraph align='center' variant='subtitle2'>
-          These are the frameworks and tools I am most familiar with and have
-          used to deploy websites.
-        </Typography>
-        <TechShowcase />
+        <Toolbox />
       </div>
+    </Container>
+  );
+}
+
+function Toolbox() {
+  const classes = useStyles();
+  return (
+    <Container>
+      <Typography
+        variant='h4'
+        className={classes.title}
+        align='center'
+        paragraph
+      >
+        My Toolbox
+      </Typography>
+      <Typography paragraph align='center' variant='subtitle2'>
+        These are the frameworks and tools I am most familiar with and have used
+        to deploy websites.
+      </Typography>
+      <TechShowcase />
     </Container>
   );
 }

@@ -3,7 +3,7 @@ import DraftsIcon from '@material-ui/icons/Drafts';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import MailIcon from '@material-ui/icons/Mail';
-import { IconLinkButton } from 'components/IconLinkButton';
+import { IconLinkButton } from 'components/Navbar/IconLinkButton';
 import React from 'react';
 import { Link } from 'react-scroll';
 

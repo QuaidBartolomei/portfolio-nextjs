@@ -14,7 +14,6 @@ const useStyles = makeStyles(theme =>
 
 export type IconLinkButtonProps = IconButtonProps & {
   icon: JSX.Element;
-  onClick?: () => void;
   href: string;
 };
 

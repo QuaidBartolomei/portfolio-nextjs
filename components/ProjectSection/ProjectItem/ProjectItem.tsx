@@ -2,6 +2,7 @@ import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import { FullscreenImage } from '@quaidbartolomei/material-ui.image.fullscreen-image';
 import React from 'react';
+import { ProjectData } from '../projectData';
 import ProjectDetails from './ProjectDetails';
 
 const useStyles = makeStyles(theme =>
@@ -33,17 +34,12 @@ const useStyles = makeStyles(theme =>
 );
 
 export interface ProjectItemProps {
-  name: string;
-  description: string;
-  github: string;
-  demo: string;
-  imageUrl: string;
-  technologiesUsed: string[];
+  projectData: ProjectData;
 }
 
 export default function ProjectItem(props: ProjectItemProps) {
   const classes = useStyles();
-  const { imageUrl } = props;
+  const { imageUrl } = props.projectData;
   const [showFullImage, setShowFullImage] = React.useState(false);
 
   return (

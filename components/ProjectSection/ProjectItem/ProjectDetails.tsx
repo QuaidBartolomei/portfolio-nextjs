@@ -6,6 +6,7 @@ import Button from '@material-ui/core/Button';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import PublicIcon from '@material-ui/icons/Public';
 import Link from '@material-ui/core/Link';
+import { ProjectData } from '../projectData';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -20,26 +21,16 @@ const useStyles = makeStyles(theme =>
 );
 
 export type ProjectDetailsProps = {
-  name: string;
-  description: string;
-  github: string;
-  demo: string;
-  imageUrl: string;
-  technologiesUsed: string[];
+  projectData: ProjectData;
 };
 
 export default function ProjectDetails(
   props: HTMLAttributes<HTMLDivElement> & ProjectDetailsProps
 ) {
-  const {
-    imageUrl,
-    name,
-    demo,
-    github,
-    technologiesUsed,
-    description,
-    ...divProps
-  } = props;
+  const { projectData, ...divProps } = props;
+
+  const { name, demo, github, technologiesUsed, description } = projectData;
+
   const classes = useStyles();
   const Title = () => (
     <Typography gutterBottom variant='h5' component='h2'>
@@ -78,7 +69,7 @@ export default function ProjectDetails(
   );
 
   const GitHubLink = () => (
-    <Link href={demo}>
+    <Link href={github}>
       <Button
         size='small'
         variant='outlined'

@@ -2,8 +2,9 @@ import { Typography } from '@material-ui/core';
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import ProjectItem, { ProjectItemProps } from './ProjectItem/ProjectItem';
+import ProjectItem from './ProjectItem/ProjectItem';
 import { Element } from 'react-scroll';
+import projectData from './projectData';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -33,32 +34,13 @@ const useStyles = makeStyles(theme =>
   })
 );
 
-const projects: ProjectItemProps[] = [
-  {
-    name: 'CAB Clothing',
-    description: 'E commerce site made with React, Typescript and Firebase.',
-    imageUrl: '/e-commerce_screenshot.png',
-    github: '#',
-    demo: 'https://e-commerce-indol.vercel.app/',
-    technologiesUsed: ['React', 'Typescript', 'Firebase', 'Material-UI'],
-  },
-  {
-    name: 'Drawnit',
-    description: 'Draw on an html canvas with your friends',
-    imageUrl: '/drawnit_screenshot.png',
-    github: '#',
-    demo: '#',
-    technologiesUsed: ['React', 'Typescript', 'Node', 'MongoDB', 'Material-UI'],
-  },
-];
-
 export default function ProjectSection() {
   const classes = useStyles();
 
   const Projects = () => (
     <div className={classes.projects}>
-      {projects.map(project => (
-        <ProjectItem {...project} github='#' demo='#' key={project.name} />
+      {projectData.map(projectData => (
+        <ProjectItem projectData={projectData} key={projectData.name} />
       ))}
     </div>
   );
