@@ -1,7 +1,7 @@
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
-import TechShowcase from 'components/AboutSection/TechShowcase';
+import DevelopmentToolbox from 'components/AboutSection/DevelopmentToolbox';
 import React from 'react';
 import AboutMe from './AboutMe';
 
@@ -62,7 +62,7 @@ function Toolbox() {
         These are the frameworks and tools I am most familiar with and have used
         to deploy websites.
       </Typography>
-      <TechShowcase />
+      <DevelopmentToolbox />
     </Container>
   );
 }
