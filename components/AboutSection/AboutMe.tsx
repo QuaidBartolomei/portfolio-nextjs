@@ -1,25 +1,11 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
 import Container from '@material-ui/core/Container';
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    AboutMeContainer: {
-// styles here
-},
-  })
-);
+import Typography from '@material-ui/core/Typography';
+import React from 'react';
 
 export default function AboutMe() {
-  const classes = useStyles();
   return (
     <Container maxWidth='xs'>
-      <Typography
-        variant='h4'
-        align='center'
-        paragraph
-      >
+      <Typography variant='h4' align='center' paragraph>
         About Me
       </Typography>
       <Typography paragraph align='center'>
@@ -29,4 +15,4 @@ export default function AboutMe() {
       </Typography>
     </Container>
   );
-};
+}

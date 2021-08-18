@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AboutSection from 'components/AboutSection/AboutSection';
 import ContactSection from 'components/ContactSection/ContactSection';
-import Footer from 'components/Footer';
+import { Footer } from '@quaidbartolomei/material-ui.layout.footer';
 import IntroSection from 'components/Intro/IntroSection';
 import { Navbar } from 'components/Navbar/Navbar';
 import ProjectSection from 'components/ProjectSection/ProjectSection';
@@ -52,7 +52,7 @@ export default function index() {
         <ProjectSection />
         <ContactSection />
       </Paper>
-      <Footer />
+      <Footer owner='Quaid Bartolomei' />
     </>
   );
 }

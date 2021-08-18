@@ -1,8 +1,10 @@
 import { IconType } from 'react-icons';
 import { IoLogoVercel } from 'react-icons/io5';
 import {
+  SiBit,
   SiFirebase,
   SiHeroku,
+  SiJest,
   SiMaterialUi,
   SiMongodb,
   SiNextDotJs,
@@ -25,6 +27,8 @@ const toolboxData = [
   { Icon: IoLogoVercel, name: 'Vercel' },
   { Icon: SiFirebase, name: 'Firebase' },
   { Icon: SiStorybook, name: 'Storybook' },
+  { Icon: SiJest, name: 'Jest' },
+  { Icon: SiBit, name: 'Bit.dev' },
 ];
 
 export default toolboxData;

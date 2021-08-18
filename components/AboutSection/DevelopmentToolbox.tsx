@@ -1,22 +1,14 @@
 import Grid from '@material-ui/core/Grid';
+import Typography from '@material-ui/core/Typography';
+import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 import toolboxData from './toolboxData';
 import ToolboxItem from './ToolboxItem';
 
-const size = 32;
-
 const useStyles = makeStyles(theme =>
   createStyles({
-    image: {
-      height: size,
-      width: size,
-      backgroundSize: 'contain',
-      backgroundPosition: 'center',
-      backgroundRepeat: 'no-repeat',
-      backgroundColor: 'transparent',
-    },
     container: {
       display: 'flex',
       textAlign: 'center',
@@ -32,13 +24,30 @@ const useStyles = makeStyles(theme =>
         marginBottom: theme.spacing(1),
       },
     },
+    toolboxSection: {
+      marginTop: theme.spacing(4),
+      maxWidth: 400,
+    },
   })
 );
 
 export default function DevelopmentToolbox() {
   const classes = useStyles();
 
-  return (
+  const Title = () => (
+    <Typography variant='h4' align='center' paragraph>
+      My Toolbox
+    </Typography>
+  );
+
+  const Description = () => (
+    <Typography paragraph align='center'>
+      These are the frameworks and tools that I am most familiar with and have
+      used to deploy websites.
+    </Typography>
+  );
+
+  const Toolbox = () => (
     <Paper className={classes.container}>
       <Grid container spacing={1}>
         {toolboxData.map(tool => (
@@ -48,5 +57,13 @@ export default function DevelopmentToolbox() {
         ))}
       </Grid>
     </Paper>
+  );
+
+  return (
+    <div className={classes.toolboxSection}>
+      <Title />
+      <Description />
+      <Toolbox />
+    </div>
   );
 }

@@ -3,6 +3,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { Element } from 'react-scroll';
+import scrollTargets from 'utils/scrollTargets';
 import ContactForm from './ContactForm/ContactForm';
 
 const useStyles = makeStyles(theme =>
@@ -26,7 +27,7 @@ const useStyles = makeStyles(theme =>
 export default function ContactSection() {
   const classes = useStyles();
   return (
-    <Element name='contact'>
+    <Element name={scrollTargets.contact} >
       <Container className={classes.container} maxWidth='xs'>
         <Typography
           align='center'

@@ -1,9 +1,9 @@
-import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import DevelopmentToolbox from 'components/AboutSection/DevelopmentToolbox';
+import Container from '@material-ui/core/Container';
 import React from 'react';
 import AboutMe from './AboutMe';
+import DevelopmentToolbox from './DevelopmentToolbox';
+import Image from 'next/image';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -16,9 +16,6 @@ const useStyles = makeStyles(theme =>
       justifyContent: 'center',
       paddingTop: theme.spacing(4),
     },
-    image: {
-      width: 300,
-    },
     container: {
       display: 'flex',
       flexDirection: 'column',
@@ -27,8 +24,8 @@ const useStyles = makeStyles(theme =>
       maxWidth: 400,
       marginTop: theme.spacing(4),
     },
-    title: {
-      marginTop: theme.spacing(4),
+    imageContainer: {
+      margin: theme.spacing(1),
     },
   })
 );
@@ -38,32 +35,13 @@ export default function AboutSection() {
 
   return (
     <Container className={classes.AboutSectionContainer} maxWidth='lg'>
-      <img src='Responsive-amico.svg' className={classes.image} />
+      <div className={classes.imageContainer}>
+        <Image src='/Responsive-amico.svg' height={300} width={300} />
+      </div>
       <div className={classes.container}>
         <AboutMe />
-        <Toolbox />
+        <DevelopmentToolbox />
       </div>
-    </Container>
-  );
-}
-
-function Toolbox() {
-  const classes = useStyles();
-  return (
-    <Container>
-      <Typography
-        variant='h4'
-        className={classes.title}
-        align='center'
-        paragraph
-      >
-        My Toolbox
-      </Typography>
-      <Typography paragraph align='center' variant='subtitle2'>
-        These are the frameworks and tools I am most familiar with and have used
-        to deploy websites.
-      </Typography>
-      <DevelopmentToolbox />
     </Container>
   );
 }
