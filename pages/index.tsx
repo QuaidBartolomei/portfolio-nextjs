@@ -19,7 +19,6 @@ const backgroundColors = {
 const useStyles = makeStyles(theme =>
   createStyles({
     background: {
-      position: 'relative',
       backgroundColor: theme.palette.background.default,
     },
     container: {
@@ -37,6 +36,9 @@ const useStyles = makeStyles(theme =>
     },
     projectsSection: { background: backgroundColors.projectsSection },
     contactSection: { background: backgroundColors.contactSection },
+    indexPageContainer: {
+      position: 'relative',
+    },
   })
 );
 
@@ -46,13 +48,15 @@ export default function index() {
   return (
     <>
       <IntroSection />
-      <Paper square elevation={24} className={classes.background}>
-        <Navbar />
-        <AboutSection />
-        <ProjectSection />
-        <ContactSection />
-      </Paper>
-      <Footer owner='Quaid Bartolomei' />
+      <div className={classes.indexPageContainer}>
+        <Paper square elevation={24} className={classes.background}>
+          <Navbar />
+          <AboutSection />
+          <ProjectSection />
+          <ContactSection />
+        </Paper>
+        <Footer owner='Quaid Bartolomei' />
+      </div>
     </>
   );
 }
