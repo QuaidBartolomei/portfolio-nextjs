@@ -3,7 +3,7 @@ import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import { animateScroll } from 'react-scroll';
-import personalData from 'utils/personalData';
+import personalData from 'data/personalData';
 
 const useStyles = makeStyles(theme =>
   createStyles({

@@ -2,7 +2,7 @@ import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import personalData from 'utils/personalData';
+import personalData from 'data/personalData';
 import Background from './Background';
 import ContactLinkButton from './ContactLinkButton';
 import ProjectsLinkButton from './ProjectsLinkButton';
@@ -10,7 +10,7 @@ import ProjectsLinkButton from './ProjectsLinkButton';
 const useStyles = makeStyles(theme =>
   createStyles({
     introSection: {
-      height:'100vh',
+      height: '100vh',
       width: '100%',
     },
     introSectionContent: {
@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme =>
       color: theme.palette.primary.contrastText,
     },
     contentContainer: {
-      height:'100vh',
+      height: '100vh',
       width: '100vw',
       position: 'fixed',
     },
@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme =>
         marginRight: theme.spacing(2),
       },
       justifyContent: 'center',
+      flexWrap: 'wrap',
     },
   })
 );
@@ -44,7 +45,6 @@ const useStyles = makeStyles(theme =>
 export default function IntroSection() {
   const classes = useStyles();
   const { name } = personalData;
-
   return (
     <section className={classes.introSection}>
       <Background />

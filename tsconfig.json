@@ -16,6 +16,6 @@
     "baseUrl": ".",
     "jsx": "preserve"
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".storybook/*.tsx"],
   "exclude": ["node_modules"]
 }

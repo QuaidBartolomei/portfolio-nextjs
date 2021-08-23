@@ -7,7 +7,7 @@ import { IconButtonProps } from '@material-ui/core/IconButton';
 const useStyles = makeStyles(theme =>
   createStyles({
     container: {
-      color:theme.palette.primary.light
+      color: theme.palette.primary.light,
     },
   })
 );
@@ -20,11 +20,8 @@ export type IconLinkButtonProps = IconButtonProps & {
 export function IconLinkButton(props: IconLinkButtonProps) {
   const { href, icon, ...buttonProps } = props;
   const classes = useStyles();
-
   return (
-    <Link href={href}
-    className={classes.container}
-    >
+    <Link href={href} className={classes.container}>
       <IconButton {...buttonProps}>{icon}</IconButton>
     </Link>
   );

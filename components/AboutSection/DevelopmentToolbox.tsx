@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import toolboxData from './toolboxData';
+import toolboxData from '../../data/toolboxData';
 import ToolboxItem from './ToolboxItem';
 
 const useStyles = makeStyles(theme =>

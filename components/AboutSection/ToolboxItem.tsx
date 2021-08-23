@@ -1,7 +1,7 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { ToolboxItemData } from './toolboxData';
+import { ToolboxItemData } from '../../data/toolboxData';
 
 
 const useStyles = makeStyles(theme =>

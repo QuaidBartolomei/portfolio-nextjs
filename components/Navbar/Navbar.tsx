@@ -6,9 +6,9 @@ import React from 'react';
 import BrandLinkButton from './BrandLinkButton';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import { IconLinkButton } from 'components/Navbar/IconLinkButton';
+import { IconLinkButton } from 'components/IconLinkButton';
 import ContactIconLinkButton from './ContactIconLinkButton';
-import personalData from 'utils/personalData';
+import personalData from 'data/personalData';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
