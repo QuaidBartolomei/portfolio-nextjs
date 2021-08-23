@@ -6,46 +6,44 @@ import Image from 'next/image';
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    ProjectItemThumbnailContainer: {
-      // styles here
-    },
-
     image: {
       '&:hover': {
         cursor: 'pointer',
       },
+    },
+    fullscreenImage: {
+      margin: 0,
     },
   })
 );
 
 export type ProjectItemThumbnailProps = {
   imageUrl: string;
+  name: string;
 };
 
 export default function ProjectItemThumbnail({
   imageUrl,
+  name,
 }: ProjectItemThumbnailProps) {
   const classes = useStyles();
   const [showFullImage, setShowFullImage] = React.useState(false);
 
   return (
-    <>
+    <Paper onClick={() => !showFullImage && setShowFullImage(true)}>
       <FullscreenImage
         image={imageUrl}
         onClick={() => setShowFullImage(false)}
         open={showFullImage}
-        style={{
-          margin: 0,
-        }}
+        alt={name}
+        className={classes.fullscreenImage}
       />
-      <Paper onClick={() => setShowFullImage(true)}>
-        <Image
-          height={180}
-          width={320}
-          className={classes.image}
-          src={imageUrl}
-        />
-      </Paper>
-    </>
+      <Image
+        height={180}
+        width={320}
+        className={classes.image}
+        src={imageUrl}
+      />
+    </Paper>
   );
 }

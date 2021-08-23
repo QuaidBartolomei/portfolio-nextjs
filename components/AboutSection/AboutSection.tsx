@@ -9,12 +9,10 @@ const useStyles = makeStyles(theme =>
   createStyles({
     AboutSectionContainer: {
       display: 'flex',
-      minHeight: '100vh',
       flexDirection: 'row',
       flexWrap: 'wrap',
       alignItems: 'center',
       justifyContent: 'center',
-      paddingTop: theme.spacing(4),
     },
     container: {
       display: 'flex',
@@ -22,7 +20,6 @@ const useStyles = makeStyles(theme =>
       alignItems: 'center',
       justifyContent: 'center',
       maxWidth: 400,
-      marginTop: theme.spacing(4),
     },
     imageContainer: {
       margin: theme.spacing(1),
@@ -34,7 +31,11 @@ export default function AboutSection() {
   const classes = useStyles();
 
   return (
-    <Container className={classes.AboutSectionContainer} maxWidth='lg'>
+    <Container
+      component='section'
+      className={classes.AboutSectionContainer}
+      maxWidth='lg'
+    >
       <div className={classes.imageContainer}>
         <Image src='/Responsive-amico.svg' height={300} width={300} />
       </div>

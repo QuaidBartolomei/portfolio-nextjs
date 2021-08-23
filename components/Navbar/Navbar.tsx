@@ -7,7 +7,7 @@ import BrandLinkButton from './BrandLinkButton';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import LinkedInIcon from '@material-ui/icons/LinkedIn';
 import { IconLinkButton } from 'components/Navbar/IconLinkButton';
-import ContactButton from './ContactButton';
+import ContactIconLinkButton from './ContactIconLinkButton';
 import personalData from 'utils/personalData';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -22,29 +22,26 @@ const useStyles = makeStyles((theme: Theme) =>
     title: {
       flexGrow: 1,
     },
-    background: {
-      height: '100%',
-      width: '100%',
-      position: 'absolute',
-    },
   })
 );
 
 export type NavbarProps = {} & AppBarProps;
 
-export function Navbar(props: NavbarProps) {
+export function Navbar({ className, ...otherProps }: NavbarProps) {
   const classes = useStyles();
   const { github, linkedin } = personalData;
-
   return (
-    <AppBar className={classes.appbar} elevation={0} {...props}>
+    <AppBar
+      className={classes.appbar + ' ' + className}
+      {...otherProps}
+    >
       <Container maxWidth='lg' disableGutters>
         <Toolbar>
           <div className={classes.title}>
             <BrandLinkButton />
           </div>
           <div className={classes.buttons}>
-            <ContactButton />
+            <ContactIconLinkButton />
             <IconLinkButton
               color='inherit'
               href={github}

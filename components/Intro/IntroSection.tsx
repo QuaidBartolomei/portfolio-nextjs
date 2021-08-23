@@ -1,20 +1,16 @@
-import Button from '@material-ui/core/Button';
 import Container from '@material-ui/core/Container';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import React from 'react';
-import { scroller } from 'react-scroll';
 import personalData from 'utils/personalData';
-import scrollTargets from 'utils/scrollTargets';
 import Background from './Background';
 import ContactLinkButton from './ContactLinkButton';
-
-const height = '100vh';
+import ProjectsLinkButton from './ProjectsLinkButton';
 
 const useStyles = makeStyles(theme =>
   createStyles({
     introSection: {
-      height,
+      height:'100vh',
       width: '100%',
     },
     introSectionContent: {
@@ -27,15 +23,13 @@ const useStyles = makeStyles(theme =>
       color: theme.palette.primary.contrastText,
     },
     contentContainer: {
-      height,
+      height:'100vh',
       width: '100vw',
       position: 'fixed',
     },
-    text: {
-      marginBottom: theme.spacing(2),
-    },
     buttonsContainer: {
       display: 'flex',
+      marginTop: theme.spacing(2),
       flexDirection: 'row',
       alignItems: 'center',
       '&>*': {
@@ -51,33 +45,21 @@ export default function IntroSection() {
   const classes = useStyles();
   const { name } = personalData;
 
-  function ViewProjectsButton() {
-    const scrollToProjects = () =>
-      scroller.scrollTo(scrollTargets.projects, {
-        smooth: true,
-      });
-    return (
-      <Button variant='contained' color='primary' onClick={scrollToProjects}>
-        View My Work
-      </Button>
-    );
-  }
-
   return (
-    <div className={classes.introSection}>
+    <section className={classes.introSection}>
       <Background />
       <div className={classes.contentContainer}>
         <Container className={classes.introSectionContent}>
           <Typography variant='h4'>{name}</Typography>
-          <Typography paragraph className={classes.text} variant='subtitle1'>
+          <Typography paragraph variant='subtitle1'>
             Full Stack Web Developer
           </Typography>
           <div className={classes.buttonsContainer}>
-            <ViewProjectsButton />
+            <ProjectsLinkButton />
             <ContactLinkButton />
           </div>
         </Container>
       </div>
-    </div>
+    </section>
   );
 }
