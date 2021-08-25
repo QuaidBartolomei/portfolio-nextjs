@@ -36,8 +36,8 @@ export default function ContactSection() {
         Contact Me
       </Typography>
       <Typography paragraph align='center' variant='subtitle2'>
-        Send me a message with your name and email address and I will email you
-        a response.
+        Interested in working with me? Send me a message with your name and
+        email address and I will email you a response.
       </Typography>
       <ContactForm />
     </Container>

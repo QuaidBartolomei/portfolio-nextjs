@@ -1,8 +1,7 @@
 import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import Container from '@material-ui/core/Container';
 import Paper from '@material-ui/core/Paper';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
 import React from 'react';
 import toolboxData from '../../data/toolboxData';
 import ToolboxItem from './ToolboxItem';
@@ -25,7 +24,6 @@ const useStyles = makeStyles(theme =>
       },
     },
     toolboxSection: {
-      marginTop: theme.spacing(4),
       maxWidth: 400,
     },
   })

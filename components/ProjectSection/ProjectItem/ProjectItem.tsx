@@ -1,6 +1,6 @@
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import React from 'react';
-import { ProjectData } from '../projectData';
+import projectData, { ProjectData } from '../projectData';
 import ProjectDetails from './ProjectDetails';
 import ProjectItemThumbnail from './ProjectItemThumbnail';
 
@@ -31,16 +31,14 @@ export interface ProjectItemProps {
 
 export default function ProjectItem(props: ProjectItemProps) {
   const classes = useStyles();
-  const { imageUrl } = props.projectData;
+  const { projectData } = props;
 
   return (
-    <>
-      <div className={classes.projectsContainer}>
-        <ProjectItemThumbnail imageUrl={imageUrl} />
-        <div className={classes.projectDetails}>
-          <ProjectDetails {...props} />
-        </div>
+    <div className={classes.projectsContainer}>
+      <ProjectItemThumbnail projectData={projectData} />
+      <div className={classes.projectDetails}>
+        <ProjectDetails {...props} />
       </div>
-    </>
+    </div>
   );
 }

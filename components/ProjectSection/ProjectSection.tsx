@@ -8,9 +8,6 @@ import ProjectItem from './ProjectItem/ProjectItem';
 
 const useStyles = makeStyles(theme =>
   createStyles({
-    container: {
-      width: '100%',
-    },
     projects: {
       display: 'flex',
       flexDirection: 'column',
@@ -21,8 +18,8 @@ const useStyles = makeStyles(theme =>
       },
     },
     title: {
-      marginBottom: theme.spacing(8),
-      textAlign:'center'
+      marginBottom: theme.spacing(4),
+      textAlign: 'center',
     },
   })
 );
@@ -39,12 +36,7 @@ export default function ProjectSection() {
   );
 
   return (
-    <Container
-      component='section'
-      className={classes.container}
-      maxWidth='lg'
-      id={scrollTargets.projects}
-    >
+    <Container component='section' maxWidth='lg' id={scrollTargets.projects}>
       <Typography variant='h4' className={classes.title}>
         Recent Projects
       </Typography>
