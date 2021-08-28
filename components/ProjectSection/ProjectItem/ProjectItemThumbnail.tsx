@@ -1,10 +1,8 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import { FullscreenImage } from '@quaidbartolomei/material-ui.image.fullscreen-image';
-import Paper from '@material-ui/core/Paper';
-import Image from 'next/image';
 import Link from '@material-ui/core/Link';
-import { ProjectItemProps } from './ProjectItem';
+import Paper from '@material-ui/core/Paper';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Image from 'next/image';
+import React from 'react';
 import { ProjectData } from '../projectData';
 
 const useStyles = makeStyles(theme =>
@@ -29,12 +27,12 @@ export default function ProjectItemThumbnail({
 }: ProjectItemThumbnailProps) {
   const classes = useStyles();
   const { imageUrl, name, demo } = projectData;
-  const [showFullImage, setShowFullImage] = React.useState(false);
 
   return (
     <Link href={demo}>
       <Paper>
         <Image
+          alt={`${name} screenshot`}
           height={180}
           width={320}
           className={classes.image}
