@@ -1,4 +1,3 @@
-
 export function postData<T>(data: T) {
   return fetch('/api/contact', {
     method: 'POST',

@@ -1,10 +1,9 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
-import SendIcon from '@material-ui/icons/Send';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { useFormikContext } from 'formik';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import DoneIcon from '@material-ui/icons/Done';
+import SendIcon from '@material-ui/icons/Send';
+import React from 'react';
 
 const useStyles = makeStyles(theme =>
   createStyles({
@@ -25,8 +24,6 @@ export default function SubmitButton({
   status?: SubmitStatus;
 }) {
   const classes = useStyles();
-
-  const form = useFormikContext();
 
   const ReadyButton = () => (
     <Button
