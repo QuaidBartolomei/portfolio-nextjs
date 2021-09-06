@@ -1,18 +1,18 @@
-import Button from '@material-ui/core/Button';
-import { theme } from 'pages/_theme';
+import Button from '@mui/material/Button';
 import React from 'react';
 import { scroller } from 'react-scroll';
-import scrollTargets from 'utils/scrollTargets';
+import { scrollData } from 'utils/scrollTargets';
 
 export type ProjectsLinkButtonProps = {
   // props
 };
 
 export default function ProjectsLinkButton({}: ProjectsLinkButtonProps) {
+  const { target, offset } = scrollData.projects;
   const scrollToProjects = () =>
-    scroller.scrollTo(scrollTargets.projects, {
+    scroller.scrollTo(target, {
       smooth: true,
-      offset: -theme.spacing(10),
+      offset,
     });
   return (
     <Button variant='contained' color='primary' onClick={scrollToProjects}>

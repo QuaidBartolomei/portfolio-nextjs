@@ -1,5 +1,5 @@
-export function postData<T>(data: T) {
-  return fetch('/api/contact', {
+export function postData<T>(data: T, route: string = '/api/contact') {
+  return fetch(route, {
     method: 'POST',
     headers: {
       Accept: 'application/json, text/plain, */*',

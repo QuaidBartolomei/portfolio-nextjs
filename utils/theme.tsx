@@ -1,4 +1,4 @@
-import { createTheme, ThemeProvider } from '@material-ui/core/styles';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 import React, { PropsWithChildren } from 'react';
 
 // Create a theme instance.
@@ -15,7 +15,3 @@ export const theme = createTheme({
     },
   },
 });
-
-export default function MyThemeProvider({ children }: PropsWithChildren<{}>) {
-  return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
-}

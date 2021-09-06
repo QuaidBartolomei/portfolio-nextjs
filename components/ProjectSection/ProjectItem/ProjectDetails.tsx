@@ -1,37 +1,27 @@
-import React, { HTMLAttributes } from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import CardActions from '@material-ui/core/CardActions';
-import Button from '@material-ui/core/Button';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import PublicIcon from '@material-ui/icons/Public';
-import Link from '@material-ui/core/Link';
-import { ProjectData } from '../projectData';
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    links: {
-      padding: 0,
-      marginTop: theme.spacing(2),
-    },
-    description: {
-      flexGrow: 1,
-    },
-  })
-);
+import GitHubIcon from '@mui/icons-material/GitHub';
+import PublicIcon from '@mui/icons-material/Public';
+import Button from '@mui/material/Button';
+import Link from '@mui/material/Link';
+import Typography from '@mui/material/Typography';
+import Box, { BoxProps } from '@mui/system/Box';
+import React from 'react';
+import { ProjectData } from 'data/projectData';
 
 export type ProjectDetailsProps = {
   projectData: ProjectData;
 };
 
-export default function ProjectDetails(
-  props: HTMLAttributes<HTMLDivElement> & ProjectDetailsProps
-) {
-  const { projectData, ...divProps } = props;
+export default function ProjectDetails(props: BoxProps & ProjectDetailsProps) {
+  const { projectData, ...boxProps } = props;
 
-  const { name, demo, github, technologiesUsed, description } = projectData;
+  const {
+    name,
+    liveDemoUrl,
+    github,
+    technologiesUsed,
+    description,
+  } = projectData;
 
-  const classes = useStyles();
   const Title = () => (
     <Typography gutterBottom variant='h5' component='h2'>
       {name}
@@ -46,7 +36,9 @@ export default function ProjectDetails(
 
   const Description = () => (
     <Typography
-      className={classes.description}
+      sx={{
+        flexGrow: 1,
+      }}
       variant='body2'
       color='textSecondary'
       component='p'
@@ -56,7 +48,7 @@ export default function ProjectDetails(
   );
 
   const LiveDemoLink = () => (
-    <Link href={demo}>
+    <Link href={liveDemoUrl}>
       <Button
         size='small'
         variant='outlined'
@@ -82,18 +74,23 @@ export default function ProjectDetails(
   );
 
   const Links = () => (
-    <CardActions className={classes.links}>
+    <Box
+      sx={{
+        padding: 0,
+        mt: 2,
+      }}
+    >
       <LiveDemoLink />
       <GitHubLink />
-    </CardActions>
+    </Box>
   );
 
   return (
-    <div {...divProps}>
+    <Box {...boxProps}>
       <Title />
       <TechnologiesUsed />
       <Description />
       <Links />
-    </div>
+    </Box>
   );
 }

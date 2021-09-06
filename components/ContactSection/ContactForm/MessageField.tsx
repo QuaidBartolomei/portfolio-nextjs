@@ -1,20 +1,15 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import TextField from '@mui/material/TextField';
 import { useFormikContext } from 'formik';
-import TextField from '@material-ui/core/TextField';
+import React from 'react';
 import { ContactFormData } from './contact.form';
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    EmailFieldContainer: {
-      // styles here
-    },
-  })
-);
-
 export default function MessageField() {
-  const { values, handleChange, touched, errors } =
-    useFormikContext<ContactFormData>();
+  const {
+    values,
+    handleChange,
+    touched,
+    errors,
+  } = useFormikContext<ContactFormData>();
   return (
     <TextField
       id='message'

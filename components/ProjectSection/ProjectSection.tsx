@@ -1,43 +1,40 @@
-import { Typography } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
 import React from 'react';
-import scrollTargets from 'utils/scrollTargets';
-import projectData from './projectData';
+import { scrollData } from 'utils/scrollTargets';
+import projectData from 'data/projectData';
 import ProjectItem from './ProjectItem/ProjectItem';
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    projects: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      '&>*:not(:last-child)': {
-        marginBottom: theme.spacing(12),
-        [theme.breakpoints.down('sm')]: { marginBottom: theme.spacing(8) },
-      },
-    },
-    title: {
-      marginBottom: theme.spacing(4),
-      textAlign: 'center',
-    },
-  })
-);
-
 export default function ProjectSection() {
-  const classes = useStyles();
-
   const Projects = () => (
-    <div className={classes.projects}>
+    <Stack
+      direction='column'
+      alignItems='center'
+      spacing={{
+        lg: 12,
+        xs: 8,
+      }}
+    >
       {projectData.map(projectData => (
         <ProjectItem projectData={projectData} key={projectData.name} />
       ))}
-    </div>
+    </Stack>
   );
 
   return (
-    <Container component='section' maxWidth='lg' id={scrollTargets.projects}>
-      <Typography variant='h4' className={classes.title}>
+    <Container
+      component='section'
+      maxWidth='lg'
+      id={scrollData.projects.target}
+    >
+      <Typography
+        variant='h4'
+        sx={{
+          mb: 4,
+          textAlign: 'center',
+        }}
+      >
         Recent Projects
       </Typography>
       <Projects />

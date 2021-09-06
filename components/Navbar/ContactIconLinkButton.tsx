@@ -1,10 +1,9 @@
-import IconButton from '@material-ui/core/IconButton';
-import DraftsIcon from '@material-ui/icons/Drafts';
-import MailIcon from '@material-ui/icons/Mail';
-import { theme } from 'pages/_theme';
+import DraftsIcon from '@mui/icons-material/Drafts';
+import MailIcon from '@mui/icons-material/Mail';
+import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import { Link } from 'react-scroll';
-import scrollTargets from 'utils/scrollTargets';
+import { scrollData } from 'utils/scrollTargets';
 
 export type ContactIconLinkButtonProps = {
   // props
@@ -12,16 +11,17 @@ export type ContactIconLinkButtonProps = {
 
 export default function ContactIconLinkButton({}: ContactIconLinkButtonProps) {
   const [selected, setSelected] = React.useState(false);
+  const { target, offset } = scrollData.contact;
   return (
     <Link
-      to={scrollTargets.contact}
+      to={target}
+      offset={offset}
       spy
       onSetActive={() => setSelected(true)}
       onSetInactive={() => setSelected(false)}
       smooth
-      offset={-theme.spacing(10)}
     >
-      <IconButton color='inherit'>
+      <IconButton color='inherit' size='large'>
         {selected ? <DraftsIcon /> : <MailIcon />}
       </IconButton>
     </Link>

@@ -1,32 +1,29 @@
-import { makeStyles, createStyles } from '@material-ui/core';
-import Container from '@material-ui/core/Container';
-import Typography from '@material-ui/core/Typography';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import PhotoCircle from './PhotoCircle';
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginBottom: theme.spacing(4),
-    },
-    photo: {
-      marginBottom: theme.spacing(2),
-    },
-  })
-);
-
 export default function AboutMe() {
-  const classes = useStyles();
   return (
-    <Container maxWidth='xs' className={classes.container}>
+    <Container
+      maxWidth='xs'
+      disableGutters
+      sx={{
+        mb: 4,
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        ml: 0,
+        mr: 2,
+      }}
+    >
       <PhotoCircle
         alt='Quaid Bartolomei'
         image='/me.jpg'
-        className={classes.photo}
+        sx={{
+          mb: 2,
+        }}
       />
       <Typography variant='h4' align='center'>
         About Me

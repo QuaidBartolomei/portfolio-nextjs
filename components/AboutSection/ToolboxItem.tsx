@@ -1,42 +1,39 @@
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { ToolboxItemData } from 'data/toolboxData';
 import React from 'react';
-import { ToolboxItemData } from '../../data/toolboxData';
-
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    techItem: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    icon: {
-      display: 'flex',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    iconContainer: {
-      marginRight: theme.spacing(0.5),
-    },
-  })
-);
 
 export type ToolboxItemProps = { tool: ToolboxItemData };
 
 export default function ToolboxItem({ tool }: ToolboxItemProps) {
-  const classes = useStyles();
   const { name, Icon } = tool;
   return (
-    <div className={classes.techItem}>
-      <div className={classes.iconContainer}>
-        <Typography variant='h6' className={classes.icon}>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+      }}
+    >
+      <Box
+        sx={{
+          mr: 0.5,
+        }}
+      >
+        <Typography
+          variant='h6'
+          sx={{
+            display: 'flex',
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Icon />
         </Typography>
-      </div>
+      </Box>
       <Typography variant='h6'>{name}</Typography>
-    </div>
+    </Box>
   );
 }

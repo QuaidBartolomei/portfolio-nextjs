@@ -1,32 +1,27 @@
-import React from 'react';
-import { makeStyles, createStyles } from '@material-ui/core/styles';
+import Box from '@mui/material/Box';
+import { BoxProps } from '@mui/system/Box';
 import Image from 'next/image';
+import React from 'react';
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    PhotoCircleContainer: ({ size = 300 }: PhotoCircleProps) => ({
-      height: size,
-      width: size,
-      borderRadius: 300,
-      overflow: 'hidden',
-      position: 'relative',
-    }),
-  })
-);
-
-export type PhotoCircleProps = React.HTMLProps<HTMLDivElement> & {
+export type PhotoCircleProps = BoxProps & {
   image: string;
   alt?: string;
   size?: number;
 };
 
 export default function PhotoCircle(props: PhotoCircleProps) {
-  const { image, alt = '', size, className, ...divProps } = props;
-  const classes = useStyles(props);
+  const { image, alt = '', size = 300, sx, ...boxProps } = props;
   return (
-    <div
-      className={`${classes.PhotoCircleContainer} ${className}`}
-      {...divProps}
+    <Box
+      sx={{
+        height: size,
+        width: size,
+        borderRadius: 300,
+        overflow: 'hidden',
+        position: 'relative',
+        ...sx,
+      }}
+      {...boxProps}
     >
       <Image
         src={image}
@@ -35,6 +30,6 @@ export default function PhotoCircle(props: PhotoCircleProps) {
         objectFit='contain'
         objectPosition='center'
       />
-    </div>
+    </Box>
   );
 }
