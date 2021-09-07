@@ -13,7 +13,7 @@ export default function ProjectSection() {
       alignItems='center'
       spacing={{
         lg: 12,
-        xs: 8,
+        xs: 10,
       }}
     >
       {projectData.map(projectData => (
@@ -31,7 +31,7 @@ export default function ProjectSection() {
       <Typography
         variant='h4'
         sx={{
-          mb: 4,
+          mb: 8,
           textAlign: 'center',
         }}
       >

@@ -1,7 +1,7 @@
 export type ProjectData = {
   name: string;
   description: string;
-  github: string;
+  githubUrl: string;
   liveDemoUrl: string;
   screenshotPath: string;
   technologiesUsed: string[];
@@ -13,7 +13,7 @@ const projectData: ProjectData[] = [
     description:
       'This is an example e-commerce page I made with NextJS, Material-UI and Firebase.',
     screenshotPath: '/e-commerce_screenshot.png',
-    github: 'https://github.com/QuaidBartolomei/e-commerce',
+    githubUrl: 'https://github.com/QuaidBartolomei/e-commerce',
     liveDemoUrl: 'https://e-commerce-indol.vercel.app/',
     technologiesUsed: ['React', 'Typescript', 'Firebase', 'Material-UI'],
   },
@@ -24,7 +24,7 @@ const projectData: ProjectData[] = [
      For this project I made the backend through a test-driven development process with Jest as the testing framework. 
      `,
     screenshotPath: '/drawnit_screenshot.png',
-    github: 'https://github.com/QuaidBartolomei/drawnit',
+    githubUrl: 'https://github.com/QuaidBartolomei/drawnit',
     liveDemoUrl: 'https://drawnit.herokuapp.com/',
     technologiesUsed: ['React', 'Typescript', 'Node', 'MongoDB', 'Express'],
   },
