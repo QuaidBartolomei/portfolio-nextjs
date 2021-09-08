@@ -1,46 +1,42 @@
-import AppBar, { AppBarProps } from '@material-ui/core/AppBar';
-import Container from '@material-ui/core/Container';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import Toolbar from '@material-ui/core/Toolbar';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import AppBar, { AppBarProps } from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Toolbar from '@mui/material/Toolbar';
+import { IconLinkButton } from 'components/IconLinkButton';
+import personalData from 'data/personalData';
 import React from 'react';
 import BrandLinkButton from './BrandLinkButton';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
-import { IconLinkButton } from 'components/IconLinkButton';
 import ContactIconLinkButton from './ContactIconLinkButton';
-import personalData from 'data/personalData';
-
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    appbar: {
-      backgroundColor: theme.palette.primary.dark,
-      position: 'sticky',
-    },
-    buttons: {
-      color: theme.palette.primary.light,
-    },
-    title: {
-      flexGrow: 1,
-    },
-  })
-);
 
 export type NavbarProps = {} & AppBarProps;
 
-export function Navbar({ className, ...otherProps }: NavbarProps) {
-  const classes = useStyles();
+export function Navbar({ sx, ...otherProps }: NavbarProps) {
   const { github, linkedin } = personalData;
   return (
     <AppBar
-      className={classes.appbar + ' ' + className}
+      sx={{
+        bgcolor: 'primary.dark',
+        position: 'sticky',
+        ...sx,
+      }}
       {...otherProps}
     >
       <Container maxWidth='lg' disableGutters>
         <Toolbar>
-          <div className={classes.title}>
+          <Box
+            sx={{
+              flexGrow: 1,
+            }}
+          >
             <BrandLinkButton />
-          </div>
-          <div className={classes.buttons}>
+          </Box>
+          <Box
+            sx={{
+              color: 'primary.light',
+            }}
+          >
             <ContactIconLinkButton />
             <IconLinkButton
               color='inherit'
@@ -52,7 +48,7 @@ export function Navbar({ className, ...otherProps }: NavbarProps) {
               href={linkedin}
               icon={<LinkedInIcon />}
             />
-          </div>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

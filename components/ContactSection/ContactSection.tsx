@@ -1,35 +1,17 @@
-import Container from '@material-ui/core/Container';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 import React from 'react';
-import scrollTargets from 'utils/scrollTargets';
+import { scrollData } from 'utils/scrollTargets';
 import ContactForm from './ContactForm/ContactForm';
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    container: {
-      width: '100%',
-      display: 'flex',
-      flexDirection: 'column',
-    },
-    title: {
-      marginBottom: theme.spacing(2),
-    },
-  })
-);
-
 export default function ContactSection() {
-  const classes = useStyles();
   return (
-    <Container
-      component='section'
-      className={classes.container}
-      maxWidth='xs'
-      id={scrollTargets.contact}
-    >
+    <Container component='section' maxWidth='xs' id={scrollData.contact.target}>
       <Typography
         align='center'
-        className={classes.title}
+        sx={{
+          mb: 2,
+        }}
         paragraph
         variant='h4'
       >

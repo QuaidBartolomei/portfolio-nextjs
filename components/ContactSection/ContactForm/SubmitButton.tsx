@@ -1,20 +1,8 @@
-import Button from '@material-ui/core/Button';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import DoneIcon from '@material-ui/icons/Done';
-import SendIcon from '@material-ui/icons/Send';
+import DoneIcon from '@mui/icons-material/Done';
+import SendIcon from '@mui/icons-material/Send';
+import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
 import React from 'react';
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    SubmitButtonContainer: {
-      // styles here
-    },
-    doneButton: {
-      backgroundColor: theme.palette.success.main,
-    },
-  })
-);
 
 export type SubmitStatus = 'ready' | 'submitting' | 'done';
 
@@ -23,8 +11,6 @@ export default function SubmitButton({
 }: {
   status?: SubmitStatus;
 }) {
-  const classes = useStyles();
-
   const ReadyButton = () => (
     <Button
       variant='contained'
@@ -49,7 +35,9 @@ export default function SubmitButton({
 
   const DoneButton = () => (
     <Button
-      className={classes.doneButton}
+      sx={{
+        bgcolor: 'success.main',
+      }}
       variant='contained'
       endIcon={<DoneIcon />}
       disabled

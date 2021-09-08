@@ -1,43 +1,27 @@
-import Link from '@material-ui/core/Link';
-import Paper from '@material-ui/core/Paper';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
+import Link from '@mui/material/Link';
+import Paper from '@mui/material/Paper';
 import Image from 'next/image';
 import React from 'react';
-import { ProjectData } from '../projectData';
-
-const useStyles = makeStyles(theme =>
-  createStyles({
-    image: {
-      '&:hover': {
-        cursor: 'pointer',
-      },
-    },
-    fullscreenImage: {
-      margin: 0,
-    },
-  })
-);
+import { ProjectData } from 'data/projectData';
 
 export type ProjectItemThumbnailProps = {
-  projectData: ProjectData;
+  project: ProjectData;
 };
 
 export default function ProjectItemThumbnail({
-  projectData,
+  project,
 }: ProjectItemThumbnailProps) {
-  const classes = useStyles();
-  const { imageUrl, name, demo } = projectData;
+  const { screenshotPath: localScreenshot, name, liveDemoUrl } = project;
 
   return (
-    <Link href={demo}>
-      <Paper>
-        <Image
-          alt={`${name} screenshot`}
-          height={180}
-          width={320}
-          className={classes.image}
-          src={imageUrl}
-        />
+    <Link href={liveDemoUrl}>
+      <Paper
+        sx={{
+          height: 180,
+          width: 320,
+        }}
+      >
+        <Image src={localScreenshot} alt={name} height={180} width={320} />
       </Paper>
     </Link>
   );

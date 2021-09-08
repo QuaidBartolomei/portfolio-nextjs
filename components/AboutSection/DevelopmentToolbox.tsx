@@ -1,37 +1,11 @@
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import { createStyles, makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
+import Box from '@mui/material/Box';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 import React from 'react';
 import toolboxData from '../../data/toolboxData';
 import ToolboxItem from './ToolboxItem';
 
-const useStyles = makeStyles(theme =>
-  createStyles({
-    container: {
-      display: 'flex',
-      textAlign: 'center',
-      flexWrap: 'wrap',
-      flexDirection: 'row',
-      alignItems: 'center',
-      justifyContent: 'flex-start',
-      borderRadius: 16,
-      padding: theme.spacing(1),
-      width: '100%',
-      '&>*': {
-        marginTop: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-      },
-    },
-    toolboxSection: {
-      maxWidth: 400,
-    },
-  })
-);
-
 export default function DevelopmentToolbox() {
-  const classes = useStyles();
-
   const Title = () => (
     <Typography variant='h4' align='center' paragraph>
       My Toolbox
@@ -46,7 +20,19 @@ export default function DevelopmentToolbox() {
   );
 
   const Toolbox = () => (
-    <Paper className={classes.container}>
+    <Box
+      sx={{
+        display: 'flex',
+        textAlign: 'center',
+        flexWrap: 'wrap',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        borderRadius: 16,
+        p: 1,
+        width: '100%',
+      }}
+    >
       <Grid container spacing={1}>
         {toolboxData.map(tool => (
           <Grid item xs={6} key={tool.name}>
@@ -54,14 +40,18 @@ export default function DevelopmentToolbox() {
           </Grid>
         ))}
       </Grid>
-    </Paper>
+    </Box>
   );
 
   return (
-    <div className={classes.toolboxSection}>
+    <Box
+      sx={{
+        maxWidth: 400,
+      }}
+    >
       <Title />
       <Description />
       <Toolbox />
-    </div>
+    </Box>
   );
 }
