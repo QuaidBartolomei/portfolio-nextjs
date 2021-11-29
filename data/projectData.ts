@@ -9,11 +9,11 @@ export type ProjectData = {
 
 const projectData: ProjectData[] = [
   {
-    name: 'CAB Clothing',
+    name: 'Fine Attire',
     description:
       'This is an example e-commerce page I made with NextJS, Material-UI and Firebase.',
     screenshotPath: '/e-commerce_screenshot.png',
-    githubUrl: 'https://github.com/QuaidBartolomei/e-commerce',
+    githubUrl: 'https://github.com/QuaidBartolomei/fine-attire',
     liveDemoUrl: 'https://e-commerce-indol.vercel.app/',
     technologiesUsed: ['React', 'Typescript', 'Firebase', 'Material-UI'],
   },
