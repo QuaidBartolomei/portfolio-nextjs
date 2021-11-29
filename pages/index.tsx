@@ -1,13 +1,13 @@
-import Paper from '@mui/material/Paper';
-import Stack from '@mui/material/Stack';
-import AboutSection from 'components/AboutSection/AboutSection';
-import ContactSection from 'components/ContactSection/ContactSection';
-import { Footer } from 'components/Footer';
-import IntroSection from 'components/Intro/IntroSection';
-import { Navbar } from 'components/Navbar/Navbar';
-import ProjectSection from 'components/ProjectSection/ProjectSection';
-import React from 'react';
-import { theme } from 'utils/theme';
+import Paper from '@mui/material/Paper'
+import Stack from '@mui/material/Stack'
+import AboutSection from 'components/AboutSection/AboutSection'
+import ContactSection from 'components/ContactSection/ContactSection'
+import { Footer } from 'components/Footer'
+import IntroSection from 'components/Intro/IntroSection'
+import { Navbar } from 'components/Navbar/Navbar'
+import ProjectSection from 'components/ProjectSection/ProjectSection'
+import React from 'react'
+import { theme } from 'utils/theme'
 
 export default function index() {
   return (
@@ -15,7 +15,7 @@ export default function index() {
       <IntroSection />
       <Navbar />
       <Paper
-        component='main'
+        component="main"
         square
         elevation={24}
         sx={{
@@ -25,9 +25,9 @@ export default function index() {
         }}
       >
         <Stack
-          direction='column'
-          alignItems='center'
-          justifyContent='center'
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
           spacing={12}
         >
           <AboutSection />
@@ -35,7 +35,7 @@ export default function index() {
           <ContactSection />
         </Stack>
       </Paper>
-      <Footer copyright='Quaid Bartolomei' />
+      <Footer copyright="Quaid Bartolomei" />
     </>
-  );
+  )
 }

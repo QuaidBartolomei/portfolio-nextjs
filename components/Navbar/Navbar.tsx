@@ -1,19 +1,19 @@
-import GitHubIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import AppBar, { AppBarProps } from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import Toolbar from '@mui/material/Toolbar';
-import { IconLinkButton } from 'components/IconLinkButton';
-import personalData from 'data/personalData';
-import React from 'react';
-import BrandLinkButton from './BrandLinkButton';
-import ContactIconLinkButton from './ContactIconLinkButton';
+import GitHubIcon from '@mui/icons-material/GitHub'
+import LinkedInIcon from '@mui/icons-material/LinkedIn'
+import AppBar, { AppBarProps } from '@mui/material/AppBar'
+import Box from '@mui/material/Box'
+import Container from '@mui/material/Container'
+import Toolbar from '@mui/material/Toolbar'
+import { IconLinkButton } from 'components/IconLinkButton'
+import personalData from 'data/personalData'
+import React from 'react'
+import BrandLinkButton from './BrandLinkButton'
+import ContactIconLinkButton from './ContactIconLinkButton'
 
-export type NavbarProps = {} & AppBarProps;
+export type NavbarProps = {} & AppBarProps
 
 export function Navbar({ sx, ...otherProps }: NavbarProps) {
-  const { github, linkedin } = personalData;
+  const { github, linkedin } = personalData
   return (
     <AppBar
       sx={{
@@ -23,7 +23,7 @@ export function Navbar({ sx, ...otherProps }: NavbarProps) {
       }}
       {...otherProps}
     >
-      <Container maxWidth='lg' disableGutters>
+      <Container maxWidth="lg" disableGutters>
         <Toolbar>
           <Box
             sx={{
@@ -39,12 +39,12 @@ export function Navbar({ sx, ...otherProps }: NavbarProps) {
           >
             <ContactIconLinkButton />
             <IconLinkButton
-              color='inherit'
+              color="inherit"
               href={github}
               icon={<GitHubIcon />}
             />
             <IconLinkButton
-              color='inherit'
+              color="inherit"
               href={linkedin}
               icon={<LinkedInIcon />}
             />
@@ -52,5 +52,5 @@ export function Navbar({ sx, ...otherProps }: NavbarProps) {
         </Toolbar>
       </Container>
     </AppBar>
-  );
+  )
 }

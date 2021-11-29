@@ -1,14 +1,14 @@
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
-import Link from '@mui/material/Link';
-import React from 'react';
+import IconButton, { IconButtonProps } from '@mui/material/IconButton'
+import Link from '@mui/material/Link'
+import React from 'react'
 
 export type IconLinkButtonProps = IconButtonProps & {
-  icon: JSX.Element;
-  href: string;
-};
+  icon: JSX.Element
+  href: string
+}
 
 export function IconLinkButton(props: IconLinkButtonProps) {
-  const { href, icon, ...buttonProps } = props;
+  const { href, icon, ...buttonProps } = props
   return (
     <Link
       href={href}
@@ -16,9 +16,9 @@ export function IconLinkButton(props: IconLinkButtonProps) {
         color: 'primary.light',
       }}
     >
-      <IconButton {...buttonProps} size='large'>
+      <IconButton {...buttonProps} size="large">
         {icon}
       </IconButton>
     </Link>
-  );
+  )
 }

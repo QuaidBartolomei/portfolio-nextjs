@@ -1,5 +1,5 @@
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import React, { PropsWithChildren } from 'react';
+import { createTheme, ThemeProvider } from '@mui/material/styles'
+import React, { PropsWithChildren } from 'react'
 
 // Create a theme instance.
 export const theme = createTheme({
@@ -14,4 +14,4 @@ export const theme = createTheme({
       main: '#e63946',
     },
   },
-});
+})

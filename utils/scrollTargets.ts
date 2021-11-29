@@ -3,7 +3,7 @@ enum scrollTargets {
   contact = 'scroll-target-contact',
 }
 
-const offset = -64;
+const offset = -64
 
 export const scrollData = {
   contact: {
@@ -14,4 +14,4 @@ export const scrollData = {
     target: scrollTargets.projects,
     offset,
   },
-};
+}

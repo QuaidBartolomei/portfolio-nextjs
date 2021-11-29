@@ -1,12 +1,12 @@
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
-import { ToolboxItemData } from 'data/toolboxData';
-import React from 'react';
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
+import { ToolboxItemData } from 'data/toolboxData'
+import React from 'react'
 
-export type ToolboxItemProps = { tool: ToolboxItemData };
+export type ToolboxItemProps = { tool: ToolboxItemData }
 
 export default function ToolboxItem({ tool }: ToolboxItemProps) {
-  const { name, Icon } = tool;
+  const { name, Icon } = tool
   return (
     <Box
       sx={{
@@ -22,7 +22,7 @@ export default function ToolboxItem({ tool }: ToolboxItemProps) {
         }}
       >
         <Typography
-          variant='h6'
+          variant="h6"
           sx={{
             display: 'flex',
             flexDirection: 'row',
@@ -33,7 +33,7 @@ export default function ToolboxItem({ tool }: ToolboxItemProps) {
           <Icon />
         </Typography>
       </Box>
-      <Typography variant='h6'>{name}</Typography>
+      <Typography variant="h6">{name}</Typography>
     </Box>
-  );
+  )
 }

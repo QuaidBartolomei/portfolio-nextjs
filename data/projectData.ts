@@ -1,11 +1,11 @@
 export type ProjectData = {
-  name: string;
-  description: string;
-  githubUrl: string;
-  liveDemoUrl: string;
-  screenshotPath: string;
-  technologiesUsed: string[];
-};
+  name: string
+  description: string
+  githubUrl: string
+  liveDemoUrl: string
+  screenshotPath: string
+  technologiesUsed: string[]
+}
 
 const projectData: ProjectData[] = [
   {
@@ -28,6 +28,6 @@ const projectData: ProjectData[] = [
     liveDemoUrl: 'https://drawnit.herokuapp.com/',
     technologiesUsed: ['React', 'Typescript', 'Node', 'MongoDB', 'Express'],
   },
-];
+]
 
-export default projectData;
+export default projectData

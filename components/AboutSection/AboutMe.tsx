@@ -1,12 +1,12 @@
-import Container from '@mui/material/Container';
-import Typography from '@mui/material/Typography';
-import React from 'react';
-import PhotoCircle from './PhotoCircle';
+import Container from '@mui/material/Container'
+import Typography from '@mui/material/Typography'
+import React from 'react'
+import PhotoCircle from './PhotoCircle'
 
 export default function AboutMe() {
   return (
     <Container
-      maxWidth='xs'
+      maxWidth="xs"
       disableGutters
       sx={{
         mb: 4,
@@ -19,20 +19,20 @@ export default function AboutMe() {
       }}
     >
       <PhotoCircle
-        alt='Quaid Bartolomei'
-        image='/me.jpg'
+        alt="Quaid Bartolomei"
+        image="/me.jpg"
         sx={{
           mb: 2,
         }}
       />
-      <Typography variant='h4' align='center'>
+      <Typography variant="h4" align="center">
         About Me
       </Typography>
-      <Typography align='center'>
+      <Typography align="center">
         Hello, my name is Quaid and I am a MERN stack web developer. I care a
         great deal about the maintainabality and readability of my code and am
         always keeping an eye out for the best paradigms and frameworks.
       </Typography>
     </Container>
-  );
+  )
 }

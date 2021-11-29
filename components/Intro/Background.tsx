@@ -1,9 +1,9 @@
-import Box from '@mui/material/Box';
-import React from 'react';
+import Box from '@mui/material/Box'
+import React from 'react'
 
 export type BackgroundProps = {
   // props
-};
+}
 
 export default function Background({}: BackgroundProps) {
   return (
@@ -29,5 +29,5 @@ export default function Background({}: BackgroundProps) {
         }}
       />
     </>
-  );
+  )
 }

@@ -1,46 +1,42 @@
-import Typography from '@mui/material/Typography';
-import Box, { BoxProps } from '@mui/system/Box';
-import { ProjectData } from 'data/projectData';
-import React from 'react';
-import ProjectDetailsLinks from './ProjectDetailsLinks';
+import Typography from '@mui/material/Typography'
+import Box, { BoxProps } from '@mui/system/Box'
+import { ProjectData } from 'data/projectData'
+import React from 'react'
+import ProjectDetailsLinks from './ProjectDetailsLinks'
 
 export type ProjectDetailsProps = {
-  projectData: ProjectData;
-};
+  projectData: ProjectData
+}
 
 export default function ProjectDetails(props: BoxProps & ProjectDetailsProps) {
-  const { projectData, ...boxProps } = props;
+  const { projectData, ...boxProps } = props
 
-  const {
-    name,
-    technologiesUsed,
-    description,
-  } = projectData;
+  const { name, technologiesUsed, description } = projectData
 
   const Title = () => (
-    <Typography gutterBottom variant='h5' component='h2'>
+    <Typography gutterBottom variant="h5" component="h2">
       {name}
     </Typography>
-  );
+  )
 
   const TechnologiesUsed = () => (
-    <Typography gutterBottom variant='subtitle2'>
+    <Typography gutterBottom variant="subtitle2">
       {technologiesUsed.join(' - ')}
     </Typography>
-  );
+  )
 
   const Description = () => (
     <Typography
       sx={{
         flexGrow: 1,
       }}
-      variant='body2'
-      color='textSecondary'
-      component='p'
+      variant="body2"
+      color="textSecondary"
+      component="p"
     >
       {description}
     </Typography>
-  );
+  )
 
   return (
     <Box {...boxProps}>
@@ -49,5 +45,5 @@ export default function ProjectDetails(props: BoxProps & ProjectDetailsProps) {
       <Description />
       <ProjectDetailsLinks projectData={projectData} />
     </Box>
-  );
+  )
 }

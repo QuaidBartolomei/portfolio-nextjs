@@ -1,12 +1,12 @@
-import Container from '@mui/material/Container';
-import React from 'react';
-import AboutMe from './AboutMe';
-import DevelopmentToolbox from './DevelopmentToolbox';
+import Container from '@mui/material/Container'
+import React from 'react'
+import AboutMe from './AboutMe'
+import DevelopmentToolbox from './DevelopmentToolbox'
 
 export default function AboutSection() {
   return (
     <Container
-      component='section'
+      component="section"
       sx={{
         display: 'flex',
         flexDirection: 'row',
@@ -14,10 +14,10 @@ export default function AboutSection() {
         alignItems: 'center',
         justifyContent: 'center',
       }}
-      maxWidth='lg'
+      maxWidth="lg"
     >
       <AboutMe />
       <DevelopmentToolbox />
     </Container>
-  );
+  )
 }

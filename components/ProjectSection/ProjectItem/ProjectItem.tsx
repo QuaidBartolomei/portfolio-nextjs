@@ -1,24 +1,24 @@
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import React from 'react';
-import { ProjectData } from 'data/projectData';
-import { theme } from 'utils/theme';
-import ProjectDetails from './ProjectDetails';
-import ProjectItemThumbnail from './ProjectItemThumbnail';
+import Box from '@mui/material/Box'
+import Stack from '@mui/material/Stack'
+import React from 'react'
+import { ProjectData } from 'data/projectData'
+import { theme } from 'utils/theme'
+import ProjectDetails from './ProjectDetails'
+import ProjectItemThumbnail from './ProjectItemThumbnail'
 
 export interface ProjectItemProps {
-  projectData: ProjectData;
+  projectData: ProjectData
 }
 
 export default function ProjectItem(props: ProjectItemProps) {
-  const { projectData } = props;
+  const { projectData } = props
 
   return (
     <Stack
-      direction='row'
-      alignItems='center'
-      justifyContent='center'
-      flexWrap='wrap'
+      direction="row"
+      alignItems="center"
+      justifyContent="center"
+      flexWrap="wrap"
       spacing={1}
     >
       <ProjectItemThumbnail project={projectData} />
@@ -33,5 +33,5 @@ export default function ProjectItem(props: ProjectItemProps) {
         <ProjectDetails projectData={projectData} />
       </Box>
     </Stack>
-  );
+  )
 }

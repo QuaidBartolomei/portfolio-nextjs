@@ -1,5 +1,5 @@
-import { IconType } from 'react-icons';
-import { IoLogoVercel } from 'react-icons/io5';
+import { IconType } from 'react-icons'
+import { IoLogoVercel } from 'react-icons/io5'
 import {
   SiBit,
   SiFirebase,
@@ -12,9 +12,9 @@ import {
   SiSocketdotio,
   SiStorybook,
   SiTypescript,
-} from 'react-icons/si';
+} from 'react-icons/si'
 
-export type ToolboxItemData = { Icon: IconType; name: string };
+export type ToolboxItemData = { Icon: IconType; name: string }
 
 const toolboxData = [
   { Icon: SiReact, name: 'React' },
@@ -29,6 +29,6 @@ const toolboxData = [
   { Icon: SiStorybook, name: 'Storybook' },
   { Icon: SiJest, name: 'Jest' },
   { Icon: SiBit, name: 'Bit.dev' },
-];
+]
 
-export default toolboxData;
+export default toolboxData

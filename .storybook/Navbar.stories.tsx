@@ -1,6 +1,6 @@
-import React from 'react';
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { Navbar, NavbarProps } from 'components/Navbar/Navbar';
+import React from 'react'
+import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { Navbar, NavbarProps } from 'components/Navbar/Navbar'
 
 export default {
   title: 'Example/Navbar',
@@ -11,11 +11,11 @@ export default {
       control: { type: 'radio' },
     },
   },
-} as ComponentMeta<typeof Navbar>;
+} as ComponentMeta<typeof Navbar>
 
 const Template: ComponentStory<typeof Navbar> = (args: NavbarProps) => (
   <Navbar {...args} />
-);
+)
 
-export const Primary = Template.bind({});
-Primary.args = {};
+export const Primary = Template.bind({})
+Primary.args = {}

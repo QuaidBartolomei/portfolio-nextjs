@@ -1,5 +1,5 @@
 import React from 'react'
-import MyThemeProvider from '../pages/_theme';
+import MyThemeProvider from '../pages/_theme'
 
 export const parameters = {
   actions: { argTypesRegex: '^on[A-Z].*' },
@@ -9,12 +9,12 @@ export const parameters = {
       date: /Date$/,
     },
   },
-};
+}
 
 export const decorators = [
-  Story => (
+  (Story) => (
     <MyThemeProvider>
       <Story />
     </MyThemeProvider>
   ),
-];
+]
