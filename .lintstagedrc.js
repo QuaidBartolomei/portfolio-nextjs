@@ -1,4 +1,7 @@
 module.exports = {
+  // keep package.json sorted
+  'package.json': ['sort-package-json'],
+
   // format all file types recognized by prettier
   '*': ['prettier --ignore-unknown --write'],
 
