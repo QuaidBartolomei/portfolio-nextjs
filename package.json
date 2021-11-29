@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "format": "prettier ./ --ignore_unknown --write",
-    "lint": "next lint",
+    "lint": "eslint . --cache --fix",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
     "prepare": "husky install"
